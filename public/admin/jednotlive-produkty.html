@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="label.m - oficiální péče o vlasy londýnského týdne módy - je oceňovaná řada inspirovaná módou, kterou vyvinuli profesionální stylisté pod kreativním dohledem dynamického mezinárodního uměleckého týmu pod vedením Toniho Mascola a Sachy Mascola-Tarbucka.">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="mask-icon" href="../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="styles_admin.css">
+    <title>LabelM</title>
+</head>
+
+<body class="antialiased bg-putty-200 font-display">
+        <nav class="w-full hidden sm:w-72 fixed z-50 lg:flex lg:flex-col h-[100%] bg-putty-600">
+            <button class="w-full lg:w-72 min-h-[90px] outline-none text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 lg:block z-10" style="background-color: rgb(41, 49, 56);">
+                <a href="#">
+                    <span class="uppercase text-3xl font-extrabold border-2 rounded-[50%] p-4">ML</span>
+                </a>
+            </button>
+            <div class="w-full lg:w-72 min-h-[54px] flex border-2 border-t-0 border-gray-600 product_list_menu" style="display: none;">
+                <input type="text" class="w-[80%] outline-none bg-putty-600 text-teal-900 flex uppercase items-center text-left input_filter p-2 h-full" placeholder="název produktu">               
+                </input>
+                <div class="w-[20%] bg-teal-900 h-100% flex items-center justify-center cursor-pointer hover:bg-gray-400 exit_filter_button">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#FFFFFF" height="24" width="24" version="1.1" id="Capa_1" viewBox="0 0 52.502 52.502" xml:space="preserve">
+                        <path d="M51.718,50.857l-1.341-2.252C40.075,31.295,25.975,32.357,22.524,32.917v13.642L0,23.995L22.524,1.644v13.43  c0.115,0,0.229-0.001,0.344-0.001c12.517,0,18.294,5.264,18.542,5.496c13.781,11.465,10.839,27.554,10.808,27.715L51.718,50.857z   M25.505,30.735c5.799,0,16.479,1.923,24.993,14.345c0.128-4.872-0.896-15.095-10.41-23.012c-0.099-0.088-5.935-5.364-18.533-4.975  l-1.03,0.03V6.447L2.832,24.001l17.692,17.724V31.311l0.76-0.188C21.338,31.109,22.947,30.735,25.505,30.735z"/>
+                        </svg>
+                </div>
+            </div>
+            <div class="filter_products w-full lg:w-72 h-[100%] overflow-y-auto overflow-x-hidden p-0 z-10" style="display: none;">
+                <ul class="list-none w-full lg:w-72 list_products h-full">
+                    <template id="item-template">
+                        <li class="bg-teal-900 text-center h-[54px] text-white p-2 hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex justify-center items-center">
+                            <button class="flex justify-center items-center">
+                                <h2 class="uppercase font-semimedium">Name of item</h2>
+                            </button>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+            <div class="list_menu absolute top-[90px] z-10 w-full">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#343f4a"
+                height="40" width="40" version="1.1" id="exitNav" viewBox="0 0 52.502 52.502" xml:space="preserve"
+                class="w-full min-h-[54px] flex border-2 border-t-0 border-gray-600 items-center justify-center hover:bg-gray-400 cursor-pointer lg:hidden">
+                <path
+                    d="M51.718,50.857l-1.341-2.252C40.075,31.295,25.975,32.357,22.524,32.917v13.642L0,23.995L22.524,1.644v13.43  c0.115,0,0.229-0.001,0.344-0.001c12.517,0,18.294,5.264,18.542,5.496c13.781,11.465,10.839,27.554,10.808,27.715L51.718,50.857z   M25.505,30.735c5.799,0,16.479,1.923,24.993,14.345c0.128-4.872-0.896-15.095-10.41-23.012c-0.099-0.088-5.935-5.364-18.533-4.975  l-1.03,0.03V6.447L2.832,24.001l17.692,17.724V31.311l0.76-0.188C21.338,31.109,22.947,30.735,25.505,30.735z" />
+                </svg>
+                <button class="w-full lg:w-72 h-[54px] border-2 border-t-0 border-gray-600 bg-putty-600 text-teal-900 text-center uppercase font-semimedium open_filter_button hover:bg-gray-400" style="display: block;">vyhledat produkt
+                </button>
+                    <a href="uvodni-stranka" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">domovská stránka</span>
+                    </a>
+                    <a href="produkty" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">produkty</span>
+                    </a>
+                    <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">individuální péče o vlasy</span>
+                    </a>
+                    <a href="o-nas" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">o nás</span>
+                    </a>
+                    <a href="profesionalove" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">profesionálové</span>
+                    </a>
+                    <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">vyhledávač salónů</span>
+                    </a>
+                    <a href="my-labelm" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">#mylabelm</span>
+                    </a>
+                    <a href="jednotlive-produkty" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">jednotlivé produkty</span>
+                    </a>
+                    <a href="socialni-site" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">sociální sítě</span>
+                    </a>
+                    <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">patička</span>
+                    </a>
+                    <a href="uprava-menu" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
+                        <span class="uppercase font-semimedium">úprava menu</span>
+                    </a>
+            </div>
+            <div class="absolute bottom-2 text-center w-72 z-0">
+                <p class="text-gray-600">Central Management System</p>
+                <p class="text-gray-600">LabelM</p>
+            </div>
+        </nav>
+        <main class="lg:ml-72">
+            <section
+            class="relative flex items-center justify-center md:aspect-auto h-[280px] md:min-h-[380px] lg:min-h-[300px]">
+            <img alt="Education" class="absolute object-cover w-full h-full" loading="lazy"
+                srcset="https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_2560_1440.jpg 2560w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_2141_1204.jpg 2141w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_1791_1007.jpg 1791w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_1499_843.jpg 1499w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_1254_705.jpg 1254w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_1049_590.jpg 1049w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_878_493.jpg 878w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_734_412.jpg 734w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_614_345.jpg 614w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_514_289.jpg 514w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_430_241.jpg 430w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_359_201.jpg 359w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_301_169.jpg 301w, data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHg9IjAiCiB5PSIwIiB2aWV3Qm94PSIwIDAgMjU2MCAxNDQwIj4KCTxpbWFnZSB3aWR0aD0iMjU2MCIgaGVpZ2h0PSIxNDQwIiB4bGluazpocmVmPSJkYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUVBWUFCZ0FBRC8vZ0E3UTFKRlFWUlBVam9nWjJRdGFuQmxaeUIyTVM0d0lDaDFjMmx1WnlCSlNrY2dTbEJGUnlCMk9EQXBMQ0J4ZFdGc2FYUjVJRDBnT1RBSy85c0FRd0FEQWdJREFnSURBd01EQkFNREJBVUlCUVVFQkFVS0J3Y0dDQXdLREF3TENnc0xEUTRTRUEwT0VRNExDeEFXRUJFVEZCVVZGUXdQRnhnV0ZCZ1NGQlVVLzlzQVF3RURCQVFGQkFVSkJRVUpGQTBMRFJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVUvOEFBRVFnQUVnQWdBd0VSQUFJUkFRTVJBZi9FQUI4QUFBRUZBUUVCQVFFQkFBQUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVRQUFJQkF3TUNCQU1GQlFRRUFBQUJmUUVDQXdBRUVRVVNJVEZCQmhOUllRY2ljUlF5Z1pHaENDTkNzY0VWVXRId0pETmljb0lKQ2hZWEdCa2FKU1luS0NrcU5EVTJOemc1T2tORVJVWkhTRWxLVTFSVlZsZFlXVnBqWkdWbVoyaHBhbk4wZFhaM2VIbDZnNFNGaG9lSWlZcVNrNVNWbHBlWW1acWlvNlNscHFlb3FhcXlzN1MxdHJlNHVickN3OFRGeHNmSXljclMwOVRWMXRmWTJkcmg0dVBrNWVibjZPbnE4Zkx6OVBYMjkvajUrdi9FQUI4QkFBTUJBUUVCQVFFQkFRRUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVSQUFJQkFnUUVBd1FIQlFRRUFBRUNkd0FCQWdNUkJBVWhNUVlTUVZFSFlYRVRJaktCQ0JSQ2thR3h3UWtqTTFMd0ZXSnkwUW9XSkRUaEpmRVhHQmthSmljb0tTbzFOamM0T1RwRFJFVkdSMGhKU2xOVVZWWlhXRmxhWTJSbFptZG9hV3B6ZEhWMmQzaDVlb0tEaElXR2g0aUppcEtUbEpXV2w1aVptcUtqcEtXbXA2aXBxckt6dExXMnQ3aTV1c0xEeE1YR3g4akp5dExUMU5YVzE5aloydUxqNU9YbTUranA2dkx6OVBYMjkvajUrdi9hQUF3REFRQUNFUU1SQUQ4QSt0cTRqMVJ4NlVyQ3VaR3M2bU5QQzUvaU9LeHFTNUZjNktVT2QyTGRwTDVzS1A2ak5UVG56b3VyUzVDelhTY3BJcWwyQ2pxYUNTSFd2QmR4cTF1aFVjZzVGWTFJOHlPaWpVOW5LNU1ORm0weTFpU1JlUU90WjA0Y3ExTmExWlZIb0pXNXlFMW4vd0FmQ2ZXcUVqdXJUN2tYMHBpWlY4U0tQSUhBcHNsSC85az0iPgoJPC9pbWFnZT4KPC9zdmc+ 32w"
+                onload="window.requestAnimationFrame(function(){if(!(size=getBoundingClientRect().width))return;onload=null;sizes=Math.ceil(size/window.innerWidth*100)+'vw';});"
+                sizes="100vw"
+                src="https://d3tlyp20mcsecl.cloudfront.net/media-library/639/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e.jpg"
+                width="2560" height="1440">
+
+            <div class="px-3.5 py-8 md:px-0 text-center text-white z-10 md:w-[512px] lg:w-[800px]">
+                <h1
+                    class="text-4xl font-extrabold uppercase md:text-6xl xl:text-7xl leading-[31px] md:leading-[55px] lg:leading-[66px] tracking-[-.04em]">
+                    jednotlivé produkty</h1>
+            </div>
+            </section>
+            <div class="content w-full px-8 pt-4">
+                <div class="relative content_header mb-4 lg:mt-4">
+                    <h1 class="text-4xl lg:text-4xl font-extrabold text-teal-900 text-left uppercase lg:absolute lg:bottom-0 lg:left-0">Amaranth Posilující
+                        Šampón</h1>  
+                    <br>     
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#343f4a"
+                    height="40px" width="40px" version="1.1" id="navBtn" viewBox="0 0 297 297" xml:space="preserve"
+                    class="cursor-pointer lg:hidden">
+                    <g>
+                        <g>
+                            <g>
+                                <path
+                                    d="M279.368,24.726H102.992c-9.722,0-17.632,7.91-17.632,17.632V67.92c0,9.722,7.91,17.632,17.632,17.632h176.376     c9.722,0,17.632-7.91,17.632-17.632V42.358C297,32.636,289.09,24.726,279.368,24.726z" />
+                                <path
+                                    d="M279.368,118.087H102.992c-9.722,0-17.632,7.91-17.632,17.632v25.562c0,9.722,7.91,17.632,17.632,17.632h176.376     c9.722,0,17.632-7.91,17.632-17.632v-25.562C297,125.997,289.09,118.087,279.368,118.087z" />
+                                <path
+                                    d="M279.368,211.448H102.992c-9.722,0-17.632,7.91-17.632,17.633v25.561c0,9.722,7.91,17.632,17.632,17.632h176.376     c9.722,0,17.632-7.91,17.632-17.632v-25.561C297,219.358,289.09,211.448,279.368,211.448z" />
+                                <path
+                                    d="M45.965,24.726H17.632C7.91,24.726,0,32.636,0,42.358V67.92c0,9.722,7.91,17.632,17.632,17.632h28.333     c9.722,0,17.632-7.91,17.632-17.632V42.358C63.597,32.636,55.687,24.726,45.965,24.726z" />
+                                <path
+                                    d="M45.965,118.087H17.632C7.91,118.087,0,125.997,0,135.719v25.562c0,9.722,7.91,17.632,17.632,17.632h28.333     c9.722,0,17.632-7.91,17.632-17.632v-25.562C63.597,125.997,55.687,118.087,45.965,118.087z" />
+                                <path
+                                    d="M45.965,211.448H17.632C7.91,211.448,0,219.358,0,229.081v25.561c0,9.722,7.91,17.632,17.632,17.632h28.333     c9.722,0,17.632-7.91,17.632-17.632v-25.561C63.597,219.358,55.687,211.448,45.965,211.448z" />
+                            </g>
+                        </g>
+                    </g>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#343f4a"
+                        version="1.1" id="saveBtn" width="40px" height="40px" viewBox="0 0 488.446 488.446"
+                        xml:space="preserve" class="absolute bottom-0 right-16 cursor-pointer">
+                        <g>
+                            <g>
+                                <g>
+                                    <path
+                                        d="M153.029,90.223h182.404c5.427,0,9.873-4.43,9.873-9.869V0H143.137v80.354C143.137,85.793,147.571,90.223,153.029,90.223     z" />
+                                    <path
+                                        d="M480.817,122.864L377.88,19.494v60.859c0,23.404-19.043,42.447-42.447,42.447H153.029     c-23.409,0-42.447-19.043-42.447-42.447V0H44.823C20.068,0,0.002,20.07,0.002,44.808v398.831     c0,24.736,20.066,44.808,44.821,44.808h398.813c24.74,0,44.808-20.068,44.808-44.808V141.325     C488.444,134.392,485.698,127.758,480.817,122.864z M412.461,385.666c0,14.434-11.703,26.154-26.168,26.154H102.137     c-14.451,0-26.153-11.722-26.153-26.154V249.303c0-14.43,11.702-26.148,26.153-26.148h284.156     c14.465,0,26.168,11.72,26.168,26.148V385.666z" />
+                                    <path
+                                        d="M356.497,265.131H131.949c-9.008,0-16.294,7.273-16.294,16.28s7.286,16.28,16.294,16.28h224.549     c8.988,0,16.277-7.273,16.277-16.28S365.487,265.131,356.497,265.131z" />
+                                    <path
+                                        d="M323.936,330.264H164.508c-8.994,0-16.28,7.273-16.28,16.28c0,8.989,7.286,16.28,16.28,16.28h159.427     c8.994,0,16.281-7.291,16.281-16.28C340.217,337.537,332.93,330.264,323.936,330.264z" />
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#343f4a" height="45px" width="50px" version="1.1" id="deleteBtn" viewBox="0 0 297 297" xml:space="preserve" class="absolute bottom-0 right-0 cursor-pointer">
+                        <g>
+                            <g>
+                                <g>
+                                    <path d="M150.333,203.762c0-32.35,26.317-58.667,58.667-58.667c6.527,0,12.8,1.087,18.669,3.063l4.882-58.587H47.163     l14.518,174.21C63.233,282.408,79.091,297,97.784,297h84.147c18.692,0,34.551-14.592,36.103-33.219l0.173-2.081     c-3.001,0.475-6.075,0.729-9.207,0.729C176.651,262.429,150.333,236.112,150.333,203.762z"/>
+                                    <path d="M209,158.714c-24.839,0-45.048,20.209-45.048,45.048c0,24.839,20.209,45.048,45.048,45.048s45.048-20.209,45.048-45.048     C254.048,178.923,233.839,158.714,209,158.714z M231.101,216.232c2.659,2.66,2.659,6.971,0,9.631     c-1.33,1.329-3.073,1.994-4.816,1.994c-1.742,0-3.486-0.665-4.816-1.994L209,213.393l-12.47,12.47     c-1.33,1.329-3.073,1.994-4.816,1.994c-1.742,0-3.486-0.665-4.816-1.994c-2.659-2.66-2.659-6.971,0-9.631l12.47-12.47     l-12.47-12.47c-2.659-2.66-2.659-6.971,0-9.631c2.66-2.658,6.971-2.658,9.631,0l12.47,12.47l12.47-12.47     c2.661-2.658,6.972-2.658,9.632,0c2.659,2.66,2.659,6.971,0,9.631l-12.47,12.47L231.101,216.232z"/>
+                                    <path d="M112.095,26.102c0-6.883,5.6-12.483,12.483-12.483h30.556c6.884,0,12.484,5.6,12.484,12.483v8.507h13.619v-8.507     C181.238,11.71,169.528,0,155.135,0h-30.556c-14.392,0-26.102,11.71-26.102,26.102v8.507h13.618V26.102z"/>
+                                    <path d="M236.762,63.643c0-8.5-6.915-15.415-15.415-15.415H58.367c-8.5,0-15.415,6.915-15.415,15.415v12.31h193.81V63.643z"/>
+                                </g>
+                            </g>
+                        </g>
+                        </svg>
+                </div>
+                <section class="bg-putty-600 mb-8">
+                    <div class="flex justify-between bg-teal-900">
+                        <h2 class="uppercase font-semimedium text-3xl text-white p-4">základní informace
+                        </h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="#ffffff" class="my-auto mr-4 cursor-pointer open_exit_button" style="transform: rotate(0deg);">
+                            <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z" />
+                            <path
+                                d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z" />
+                        </svg>
+                    </div>
+                    <div class="tab">
+                        <div class="tab_content image xl:flex">
+                            <div class="image xl:w-1/2 h-full 2xl:h-[800px] p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">úvodní fotka</h2>
+                                <img src="../images/amaranth-posilujici-sampon.jpg" alt="" class="w-[80%] xl:w-[500px] 2xl:w-[600px] mx-auto">
+                                <div class="flex w-full justify-center">
+                                    <label for="fileBig" class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 cursor-pointer flex items-center justify-center absolute bottom-2">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file" id="fileBig" style="display: none;" class="image_big">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="xl:w-1/2 h-full p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">základní informace</h2>
+                                <div class="basic_info">
+                                    <div class="lg:flex my-4">
+                                        <h3 class="text-center lg:w-1/2 lg:text-right pt-2 text-lg lg:pr-1">Název produktu: </h3>
+                                        <input type="text" class="w-full max-w-[372px] lg:w-1/2 2xl:w-[40%] lg:ml-1 h-12 pl-2 outline-none mx-auto block"
+                                            placeholder="Amaranth Posilující Šampón">
+                                    </div>
+                                    <div class="lg:flex my-4">
+                                        <h3 class="w-full text-center lg:w-1/2 lg:text-right pt-3 text-lg lg:pr-1">K dispozici v: </h3>
+                                        <input type="text" class="w-full mx-auto max-w-[372px] lg:w-1/2 2xl:w-[40%] lg:ml-1 h-12 pl-2 outline-none block"
+                                            placeholder="250 ml / 350 ml">
+                                    </div>
+                                    <div class="lg:flex">
+                                        <h3 class="text-center lg:w-1/2 lg:text-right pt-3 text-lg lg:pr-1">Charakteristika v bodech: </h3>
+                                        <input type="text" class="w-full max-w-[372px] lg:w-1/2 2xl:w-[40%] lg:ml-1 h-12 pl-2 outline-none mx-auto block"
+                                            placeholder="Hydratuje / Posiluje / Zajišťuje lesk">
+                                    </div>
+                                </div>
+                                <div class="pt-4 range_image">
+                                    <h2 class="text-center text-xl font-semimedium text-teal-900 border-b-2 border-teal-900 m-8">název řady / obrázek:</h2>
+                                    <svg class="w-1/2 mx-auto mt-10 mb-7" version="1.1" id="Layer_1"
+                                        xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 273.7 199.7"
+                                        style="enable-background:new 0 0 273.7 199.7" xml:space="preserve">
+                                        <style>
+                                            .st0 {
+                                                fill: currentcolor;
+                                            }
+                                        </style>
+                                        <path class="st0"
+                                            d="M70.6 7.1c-8.9 0-14.5 5.8-14.5 14.6 0 8.6 5.1 14.2 13.7 14.2 4.8 0 8.9-1.6 12.4-4.8l-.1 9.1c-3.8 2.2-7.9 3.3-12.5 3.3-13.4.1-22.6-9.2-22.6-21.7C47 9.5 56 0 69.8 0c5.2 0 9.4 1.3 12.7 2.9l-.3 8.9c-3-2.7-6.6-4.7-11.6-4.7zM110.7 1h10.2l16 41.6h-10.1l-3.4-8.8h-16.1l-2.9 8.8h-9.5L110.7 1zm6 12.3c-.2-.7-.6-2.6-1.2-5.6-.6 3.3-1.1 5.2-1.2 5.8l-4.5 13.2h11.5l-4.6-13.4zM171.4 42.5l-10.9-19.4v19.4h-8.9V1h12.7c10.1 0 15.1 4 15.1 11.8 0 5.8-3.8 10.2-9.2 10.9l11.5 18.9h-10.3zm-9.6-23.8c5.5 0 8.8-.5 8.8-5.3s-3.2-5.6-8.8-5.6h-1.3v10.9h1.3zM196.1 1h24.5v7.5H205V17h15.6v7.6H205V35h15.6v7.6h-24.5V1z">
+                                        </path>
+                                        <g>
+                                            <path class="st0"
+                                                d="M0 120.8h13.5l26.9 44.7c1.5 2.5 3.4 7 5.4 13.4-.8-6.6-.8-11.5-.8-15.2v-43h12.4v76.9H44.6L17 152.1c-1.5-2.5-3.4-7.1-5.4-13.6.8 6.5.8 11.5.8 15.3v43.9H0v-76.9zM109.8 161.4c-4.7 4.5-10.7 6.9-17 6.9-5.5 0-10.9-2-15.3-5.4-5.6-4.5-8.7-11-8.7-18.1 0-6.4 2.4-12.2 7-16.6 4.5-4.4 10.7-6.9 17-6.9 6.3 0 12.4 2.5 17 6.9 4.6 4.5 7 10.3 7 16.6 0 6.4-2.4 12.3-7 16.6zm-2.8-16.6c0-8.3-5.8-15.1-14.1-15.1-8.4 0-14.1 6.8-14.1 15.1 0 8.4 5.5 15 14.1 15 8.3 0 14.1-6.7 14.1-15zM176.7 199.7c-17.8 0-28.4-14.4-28.4-39.9 0-25.2 10.8-39.8 28.4-39.8 17.8 0 28.4 14.2 28.4 39.8 0 25.5-10.9 39.9-28.4 39.9zm-.1-14.2c8.2 0 12.5-8.8 12.5-25.8 0-16.8-4.3-25.6-12.4-25.6-8.1 0-12.5 9-12.5 25.8 0 16.6 4.4 25.6 12.4 25.6zM234.7 177.4v.2c0 5.4 4.4 9.4 11.3 9.4 7.9 0 12.2-4.1 12.2-11.1 0-7.5-4.4-11.4-12.9-11.4-.6 0-1.3.1-2 .1v-13.5c.6 0 1.3.1 1.8.1 7.6 0 11.4-3.3 11.4-9.7 0-5.4-3.6-9.1-9.5-9.1-6 0-9.5 2.8-10.1 8h-14.6c.8-12.9 9.6-20.3 25.3-20.3 15.1 0 24.3 8 24.3 20.4 0 8.7-5.2 15.4-12.9 16.8 9 1.9 14.7 9.6 14.7 19.7 0 13.9-10.4 22.8-28 22.8-16 0-26.1-8.9-26.1-21.7v-.6h15.1z">
+                                            </path>
+                                        </g>
+                                        <path transform="rotate(-90 92.767 182.735)" class="st0"
+                                            d="M87.9 163.8h9.8v37.9h-9.8z">
+                                        </path>
+                                        <path class="st0" d="M3.9 79h265.6v5.1H3.9z"></path>
+                                    </svg>
+                                </div>
+                                <div class="grid grid-cols-2 2xl:grid-cols-3 w-3/4 mt-1 mx-auto">
+                                    <div class="mb-2">
+                                        <label for="No01" class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="radio" name="range" class="absolute w-0 h-0 opacity-0 pointer-events-none peer" id="No01">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Cleanse No01</span>
+                                        </label>
+                                    </div>  
+                                    <div class="mb-2">
+                                        <label for="No02" class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="radio" name="range" class="absolute w-0 h-0 opacity-0 pointer-events-none peer" id="No02">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Condition No02</span>
+                                        </label>
+                                    </div> 
+                                    <div class="mb-2">
+                                        <label for="No03" class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="radio" name="range" class="absolute w-0 h-0 opacity-0 pointer-events-none peer" id="No03">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Care No03</span>
+                                        </label>
+                                    </div> 
+                                    <div class="mb-2">
+                                        <label for="No04" class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="radio" name="range" class="absolute w-0 h-0 opacity-0 pointer-events-none peer" id="No04">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Create No04</span>
+                                        </label>
+                                    </div> 
+                                    <div class="mb-2">
+                                        <label for="No05" class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="radio" name="range" class="absolute w-0 h-0 opacity-0 pointer-events-none peer" id="No05">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Complete No5</span>
+                                        </label>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-putty-600 mb-8">
+                    <div class="flex justify-between bg-teal-900">
+                        <h2 class="uppercase font-semimedium text-3xl text-white p-4">Popis produktu
+                        </h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="#ffffff" class="my-auto mr-4 cursor-pointer open_exit_button" style="transform: rotate(0deg);">
+                            <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z" />
+                            <path
+                                d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z" />
+                        </svg>
+                    </div>
+                    <div class="tab">
+                        <div class="tab_content description xl:flex">
+                            <div class="w-full xl:w-1/2 p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">popis produktu</h2>
+                                <textarea name="product_info" id="product_info" rows="10"
+                                    class="p-4 mx-auto block outline-none w-full"
+                                    placeholder="Obnovte sílu a pružnost pomocí tohoto hydratačního a ochranného šamponu pro lehkou regeneraci. Náš exkluzivní komplex Power Peptide bohatý na výtažek ze semínek chia a dýňový enzym s vitamíny a manukový med pomáhá obnovovat a hydratovat vlasy a zanechává je hladké, jemné a hebké. zdravý vzhled."></textarea>
+                            </div>
+                            <div class="w-full xl:w-1/2 p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">charakteristika v bodech</h2>
+                                <div class="w-full flex justify-center">
+                                    <div class="w-full max-w-[372px] flex flex-col items-end">
+                                        <input type="text" class="w-full mr-1 h-12 pl-2 outline-none mb-2"
+                                            placeholder="Pomáhá udržovat zdravé vlasy.">
+                                        <input type="text" class="w-full mr-1 h-12 pl-2 outline-none mb-2"
+                                            placeholder="Vyživuje a regeneruje bez zatížení.">
+                                        <input type="text" class="w-full mr-1 h-12 pl-2 outline-none mb-2"
+                                            placeholder="Zanechává vlasy hladké, jemné a zdravě vypadající.">
+                                    </div>
+                                    <div class="w-full max-w-[372px]">
+                                        <input type="text" class="w-full ml-1 h-12 pl-2 outline-none mb-2"
+                                            placeholder="V případě potřeby přestavuje.">
+                                        <input type="text" class="w-full ml-1 h-12 pl-2 outline-none mb-2"
+                                            placeholder="Obnovuje pružnost a lesk.">
+                                        <input type="text" class="w-full ml-1 h-12 pl-2 outline-none mb-2">
+                                    </div>
+                                </div>
+                                <div class="flex buttons">
+                                    <div class="flex justify-center w-full">
+                                        <button class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400">odstranit
+                                            pole</button>
+                                        <button class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400">přidat
+                                            pole</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-putty-600 mb-8">
+                    <div class="flex justify-between bg-teal-900">
+                        <h2 class="uppercase font-semimedium text-3xl text-white p-4">Přírodní složky
+                        </h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="#ffffff" class="my-auto mr-4 cursor-pointer open_exit_button" style="transform: rotate(0deg);">
+                            <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z" />
+                            <path
+                                d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z" />
+                        </svg>
+                    </div>
+                    <div class="tab">
+                        <div class="ingredients tab_content xl:flex">
+                            <div class="w-full xl:w-1/2 p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">složky přírodního původu</h2>
+                                <textarea  rows="4"
+                                    class="p-4 mx-auto block mb-2 outline-none w-full max-w-[750px]"
+                                    placeholder="Technologie M-Plex Bond, naše nová a inovativní technologie pro vytváření vazeb, pomáhá chránit, posilovat a opravovat poškozené vlasy před škodlivými vlivy. Její inovativní složení vede ke zvýšenému výkonu pro vynikající změkčení a lesk."></textarea>
+                                <textarea rows="4"
+                                    class="p-4 mx-auto block mb-2 outline-none w-full max-w-[750px]"
+                                    placeholder="Technologie M-Plex Bond, naše nová a inovativní technologie pro vytváření vazeb, pomáhá chránit, posilovat a opravovat poškozené vlasy před škodlivými vlivy. Její inovativní složení vede ke zvýšenému výkonu pro vynikající změkčení a lesk."></textarea>
+                                <textarea rows="4"
+                                    class="p-4 mx-auto block mb-2 outline-none w-full max-w-[750px]"
+                                    placeholder="Technologie M-Plex Bond, naše nová a inovativní technologie pro vytváření vazeb, pomáhá chránit, posilovat a opravovat poškozené vlasy před škodlivými vlivy. Její inovativní složení vede ke zvýšenému výkonu pro vynikající změkčení a lesk."></textarea>
+                                <textarea rows="4"
+                                    class="p-4 mx-auto block mb-2 outline-none w-full max-w-[750px]"
+                                    placeholder="Technologie M-Plex Bond, naše nová a inovativní technologie pro vytváření vazeb, pomáhá chránit, posilovat a opravovat poškozené vlasy před škodlivými vlivy. Její inovativní složení vede ke zvýšenému výkonu pro vynikající změkčení a lesk."></textarea>   
+                                <div class="flex justify-center w-full">
+                                    <button class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400">odstranit
+                                        pole</button>
+                                    <button class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400">přidat nové
+                                        pole</button>
+                                </div>
+                            </div>
+                            <div class="w-full xl:w-1/2 p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">obrázek</h2>
+                                <img src="../images/amaranth-small.jpg" alt="" class="w-1/2 mx-auto">
+                                <div class="flex justify-center w-full">
+                                    <label for="fileSmall" class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 cursor-pointer flex items-center justify-center">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file" id="fileSmall" style="display: none;" class="image_small">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-putty-600 mb-8">
+                    <div class="flex justify-between bg-teal-900">
+                        <h2 class="uppercase font-semimedium text-3xl text-white p-4">Jak používat / Video
+                        </h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="#ffffff" class="my-auto mr-4 cursor-pointer open_exit_button" style="transform: rotate(0deg);">
+                            <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z" />
+                            <path
+                                d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z" />
+                        </svg>
+                    </div>
+                    <div class="tab">
+                        <div class="use lg:flex tab_content">
+                            <div class="w-full lg:w-1/2 p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">jak používat</h2>
+                                <textarea name="product_info" id="product_info" rows="6"
+                                    class="p-4 mx-auto block mb-2 w-full max-w-[750px]" placeholder="Rovnoměrně naneste na vlhké vlasy. Nechte přirozeně uschnout, rozčešte nebo upravte podle potřeby.
+                                    "></textarea>
+                            </div>
+                            <div class="w-full lg:w-1/2 p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">video</h2>
+                                <video src="../video/amaranth-posilujici-sampon-video.mp4" width="300" height="150" class="mx-auto"
+                                    controls></video>
+                                <div class="flex justify-center w-full">
+                                    <label for="fileVideo" class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 cursor-pointer flex items-center justify-center">
+                                        <span>nahrát video</span>
+                                        <input type="file" id="fileVideo" style="display: none;" class="video">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-putty-600 mb-8">
+                    <div class="flex justify-between bg-teal-900">
+                        <h2 class="uppercase font-semimedium text-3xl text-white p-4">souvísející produkty
+                        </h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="#ffffff" class="my-auto mr-4 cursor-pointer open_exit_button" style="transform: rotate(0deg);">
+                            <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z" />
+                            <path
+                                d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z" />
+                        </svg>
+                    </div>
+                    <div class="tab">
+                        <div class="next_products tab_content grid md:grid-cols-2 xl:grid-cols-3">
+                            <div class="w-full p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">volba číslo 1</h2>
+                                <img src="../images/diamond-dust-vyzivujici-leave-in.jpg" alt="" class="w-[80%] mx-auto">
+                                <h3 class="text-center uppercase font-semimedium">Diamond Dust Leave-in</h3>
+                                <button class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 mx-auto block">vybrat
+                                        produkt</button>
+                            </div>
+                            <div class="w-full p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">volba číslo 2</h2>
+                                <img src="../images/diamond-dust-vyzivujici-leave-in.jpg" alt="" class="w-[80%] mx-auto">
+                                <h3 class="text-center uppercase font-semimedium">Diamond Dust Leave-in</h3>
+                                <button class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 mx-auto block">vybrat
+                                    produkt</button>
+                            </div>
+                            <div class="w-full p-4 relative">
+                                <h2 class="text-center text-xl m-8 font-semimedium text-teal-900 border-b-2 border-teal-900">volba číslo 3</h2>
+                                <img src="../images/diamond-dust-vyzivujici-leave-in.jpg" alt="" class="w-[80%] mx-auto">
+                                <h3 class="text-center uppercase font-semimedium">Diamond Dust Leave-in</h3>
+                                <button class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 mx-auto block">vybrat
+                                    produkt</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-putty-600 mb-8">
+                    <div class="flex justify-between bg-teal-900">
+                        <h2 class="uppercase font-semimedium text-3xl text-white p-4">Nastavení filtru
+                        </h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="#ffffff" class="my-auto mr-4 cursor-pointer open_exit_button" style="transform: rotate(0deg);">
+                            <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z" />
+                            <path
+                                d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z" />
+                        </svg>
+                    </div>
+                    <div class="tab">
+                        <div class="range_filter tab_content">
+                            <div class="grid sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 filter">
+                                <div class="p-8 w-full">
+                                    <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900 border-b-2 border-teal-900 font-semimedium flex justify-center mb-2">Typ vlasů</span>
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="hair_type" value="all_hair_types" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Všechny
+                                                Typy vlasů</span>
+                                        </label>
+                                    </div>  
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="hair_type" value="blonde_colour_care" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Blond / Péče
+                                                o Barvu</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">    
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="hair_type" value="curl_smooth_anti_frizz" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Kudrlinky / Proti Krepatění</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">    
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="hair_type" value="daily_healthy_hair" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Zdravé Vlasy & Pokožka Hlavy</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="hair_type" value="fine_medium_hair" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Jemné
+                                                &amp; Střední Typy Vlasů</span>
+                                        </label>
+                                    </div>     
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="hair_type" value="medium_coarse" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Střední až
+                                                Hrubé Vlasy</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="hair_type" value="nourish_repair" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Suché & Poškozené Vlasy</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="hair_type" value="volume_fine" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Husté & Objemné Vlasy</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="p-8 w-full range">
+                                    <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900 border-b-2 border-teal-900 font-semimedium flex justify-center mb-2">Řada</span>
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="range" value="colour_care_range" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Blond & Barvené Vlasy</span>
+                                        </label>
+                                    </div>  
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="range" value="complete" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Základ Účesu</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">    
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="range" value="create" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Styling</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">    
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="range" value="curl_range" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Kudrnaté & Hladké Vlasy</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="range" value="healthy_hair_scalp_range" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Zdravé Vlasy & Pokožka</span>
+                                        </label>
+                                    </div>     
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="range" value="nourish_repair_range" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Suché & Poškozené Vlasy</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="range" value="volumise_thicken" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Objem & Posílení Vlasů</span>
+                                        </label>
+                                    </div>    
+                                </div>
+                                <div class="p-8 w-full">
+                                    <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900 border-b-2 border-teal-900 font-semimedium flex justify-center mb-2">Režim</span>
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="regime" value="no_1" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Cleanse No. 01</span>
+                                        </label>
+                                    </div>  
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="regime" value="no_2" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Condition No. 02</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">    
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="regime" value="no_3" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Care No. 03</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">    
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="regime" value="no_4" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Create No. 04</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="regime" value="no_5" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Complete No. 05</span>
+                                        </label>
+                                    </div>      
+                                </div>
+                                <div class="p-8 w-full">
+                                    <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900 border-b-2 border-teal-900 font-semimedium flex justify-center mb-2">Výsledek Stylizace</span>
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="styling-result" value="anti_frizz" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Hladké & Nezacuchané Vlasy</span>
+                                        </label>
+                                    </div>  
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="styling-result" value="curl" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Kudrlinky</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">    
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="styling-result" value="hold_finish" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Zpevnění & Dokončení</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">    
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="styling-result" value="straight" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Rovné Vlasy</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="styling-result" value="texture" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Textura Vlasů</span>
+                                        </label>
+                                    </div>    
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="styling-result" value="volumise_thicken_styling" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Zvětšení Objemu & Zahuštění</span>
+                                        </label>
+                                    </div>  
+                                    <div class="mb-4 md:mb-5">
+                                        <label class="inline-flex items-center cursor-pointer">
+                                            <span class="w-[22px] h-[22px] mr-3 border-2 border-teal-900">
+                                                <input type="checkbox" name="styling-result" value="waves" class="absolute w-0 h-0 opacity-0 pointer-events-none peer">
+                                                <svg class="w-full text-teal-900 transition-opacity opacity-0 pointer-events-none peer-checked:opacity-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                                                </svg> </span>
+                                            <span class="select-none md:text-lg tracking-[-0.01em] text-teal-900">Vlnité Vlasy</span>
+                                        </label>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <aside>
+                    <div class="w-full h-full items-center fixed top-0 left-0 z-50 next_product_filter hidden background-next-product" style="background-color: rgba(0, 0, 0, 0.7);">
+                        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[500px]">
+                            <input type="search" name="" id=""
+                                class="w-full p-2 outline-none border-teal-900 border-2 input_filter_2" placeholder="Vyhledat produkt">
+                            <ul class="overflow-y-auto h-full list_products_2">
+                                <template id="item-template_2">
+                                    <li class="bg-teal-900 text-center text-white p-2 hover:bg-gray-400 cursor-pointer">
+                                        <button>
+                                            <h2>Name of item</h2>
+                                        </button>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    <script src="admin_all_products.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+
+</html>
