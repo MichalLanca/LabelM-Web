@@ -159,6 +159,15 @@ router.get("/o-nas/digitalni-inovace.html", cors(), async (req, res) => {
     return res.redirect("/o-nas/digitalni-inovace")   
 })
 
+router.get("/o-nas/matrix", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/o-nas/matrix.html'))
+})
+
+router.get("/o-nas/matrix.html", cors(), async (req, res) => {
+    return res.redirect("/o-nas/matrix")   
+})
+
 
 router.get("/uprava-menu", cors(), requireAuth, async (req, res) => {
 
