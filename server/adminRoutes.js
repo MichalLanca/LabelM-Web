@@ -186,6 +186,15 @@ router.get("/o-nas/odbornost.html", cors(), async (req, res) => {
     return res.redirect("/o-nas/odbornost")   
 })
 
+router.get("/o-nas/udrzitelnost", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/o-nas/udrzitelnost.html'))
+})
+
+router.get("/o-nas/udrzitelnost.html", cors(), async (req, res) => {
+    return res.redirect("/o-nas/udrzitelnost")   
+})
+
 
 router.get("/uprava-menu", cors(), requireAuth, async (req, res) => {
 
