@@ -239,6 +239,23 @@ router.get("/html/about_us/matrix", cors(), async (req, res) => {
     });    
 })
 
+router.get("/html/about_us/fashion", cors(), async (req, res) => {
+    const filename = "moda.html"
+    const filePath = path.join(__dirname, "..", "public/o-nas", filename);
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Nastala chyba při čtení souboru:", err);
+            res.status(500).send("Nastala chyba při čtení souboru.");
+            return;
+        }
+
+        const html = extractMainInnerHTML(data);
+
+        res.send(html);
+    });    
+})
+
 function extractSections(htmlString) {
     const regex = /<main[^>]*>[\s\S]*?<\/main>/gi;
     const mainContent = (htmlString.match(regex) || [])[0] || '';
@@ -574,6 +591,41 @@ router.post('/html/about_us/digital_inovation', cors(), async (req, res) => {
 router.post('/html/about_us/matrix', cors(), async (req, res) => {
     const modifiedSections = req.body; 
     const filename = "matrix.html";
+    const savePath = path.join(__dirname, '..', 'public/o-nas', filename); 
+
+    fs.readFile(savePath, 'utf8', (err, loadedHTML) => {
+        if (err) {
+            console.error("Nastala chyba při čtení souboru:", err);
+            res.status(500).send("Nastala chyba při čtení souboru.");
+            return;
+        }
+        const dom = new JSDOM(loadedHTML);
+        const document = dom.window.document;
+        const mainContent = document.querySelector("main");
+        mainContent.innerHTML = "";
+        const temporaryDiv = document.createElement("div");
+        temporaryDiv.innerHTML = modifiedSections;
+        const children = Array.from(temporaryDiv.children);
+        children.forEach((child) => {
+            mainContent.appendChild(child)
+        })
+        const updatedHTML = dom.serialize();
+
+        fs.writeFile(savePath, updatedHTML, (err) => {
+            if (err) {
+                console.error("Nastala chyba při ukládání upraveného HTML souboru:", err);
+                res.status(500).send("Nastala chyba při ukládání upraveného HTML souboru.");
+                return;
+            }
+            console.log("Upravený HTML byl úspěšně uložen na serveru.");
+            res.status(200).send("Upravený HTML byl úspěšně uložen na serveru.");
+        });
+    });
+});
+
+router.post('/html/about_us/fashion', cors(), async (req, res) => {
+    const modifiedSections = req.body; 
+    const filename = "moda.html";
     const savePath = path.join(__dirname, '..', 'public/o-nas', filename); 
 
     fs.readFile(savePath, 'utf8', (err, loadedHTML) => {

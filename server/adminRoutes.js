@@ -168,6 +168,15 @@ router.get("/o-nas/matrix.html", cors(), async (req, res) => {
     return res.redirect("/o-nas/matrix")   
 })
 
+router.get("/o-nas/moda", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/o-nas/moda.html'))
+})
+
+router.get("/o-nas/moda.html", cors(), async (req, res) => {
+    return res.redirect("/o-nas/moda")   
+})
+
 
 router.get("/uprava-menu", cors(), requireAuth, async (req, res) => {
 
