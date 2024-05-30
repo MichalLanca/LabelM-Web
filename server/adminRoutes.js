@@ -132,6 +132,15 @@ router.get("/o-nas/dedictvi.html", cors(), async (req, res) => {
     return res.redirect("/o-nas/dedictvi")   
 })
 
+router.get("/o-nas/biokompatibilita", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/o-nas/biokompatibilita.html'))
+})
+
+router.get("/o-nas/biokompatibilita.html", cors(), async (req, res) => {
+    return res.redirect("/o-nas/biokompatibilita")   
+})
+
 
 router.get("/uprava-menu", cors(), requireAuth, async (req, res) => {
 
