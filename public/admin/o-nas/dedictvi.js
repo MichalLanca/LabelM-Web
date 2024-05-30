@@ -22,6 +22,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     responsiveMenu();
 })
 
+saveButton.addEventListener("click", async () => {
+    const firstUpdated = updateFirstBlock(children[1], blocks[0], images)
+    const secondUpdated = updateSecondBlock(children[2], blocks[1], images)
+    const thirdUpdated = updateThirdBlock(children[3], blocks[2], images)
+
+    div.innerHTML = "";
+    div.appendChild(children[0]);
+    div.appendChild(firstUpdated);
+    div.appendChild(secondUpdated);
+    div.appendChild(thirdUpdated);
+
+
+    await sendHTML(div.innerHTML);
+    await sentImage(uploadedImages);
+    location.reload();
+})
+
 async function firstBlock(html){
     blocks[0].querySelector("img").src = html.querySelector("section img").src;
     blocks[0].querySelector(".text input").value = removeExtraSpaces(html.querySelector("section h1").textContent);
@@ -75,9 +92,54 @@ async function thirdBlock(html){
     });
 }
 
+function updateFirstBlock(oldHtml, cmsHtml, updatedImages){
+    updateImagesSource(oldHtml, cmsHtml, updatedImages);
+    oldHtml.querySelector("h1").textContent = cmsHtml.querySelector("input[type='text']").value;
+    oldHtml.querySelector("p").textContent = cmsHtml.querySelector("textarea").value;
+
+    return oldHtml;
+}
+
+function updateSecondBlock(oldHtml, cmsHtml, updatedImages){
+    updateImagesSource(oldHtml, cmsHtml, updatedImages)
+    const oldP = oldHtml.querySelectorAll("p");
+    const newP = cmsHtml.querySelectorAll("textarea");
+    oldP.forEach((p, index) => {
+        p.textContent = newP[index].value;
+    })
+
+    return oldHtml;
+}
+
+function updateThirdBlock(oldHtml, cmsHtml, updatedImages){
+    updateImagesSource(oldHtml, cmsHtml, updatedImages)
+    const oldH2 = oldHtml.querySelectorAll("h2");
+    const oldLinks = oldHtml.querySelectorAll("a");
+    const oldP = oldHtml.querySelectorAll("p");
+    const newTexts = cmsHtml.querySelectorAll("input[type='text']");
+    const newP = cmsHtml.querySelectorAll("textarea");
+    let booleanH = true;
+    let index = 0;
+
+    newTexts.forEach((text) => {
+        if(booleanH){
+            oldH2[index].textContent = removeExtraSpaces(text.value);
+            oldP[index].textContent = removeExtraSpaces(newP[index].value);
+            booleanH = false;
+        } else {
+            oldLinks[index * 2].href = removeExtraSpaces(text.value);
+            oldLinks[index * 2 + 1].href = removeExtraSpaces(text.value);
+            index++;
+            booleanH = true;
+        }
+    })
+
+    return oldHtml;
+}
+
 async function sendHTML(html){
     try {
-        const response = await fetch('http://localhost:8080/api/html/about_us', {
+        const response = await fetch('http://localhost:8080/api/html/about_us/heritage', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'text/html' 
@@ -132,9 +194,24 @@ function updateChangedImages() {
                 image[input.id].src = url;
                 images.push(imageURLpath + file.name);
                 uploadedImages.push(file);
-                console
             }
         });
+    })
+}
+
+function updateImagesSource(oldOne, newOne, updatedImages){
+    const oldImages = oldOne.querySelectorAll("img");
+    const cmsImages = newOne.querySelectorAll("img");
+
+    oldImages.forEach((oldImage, index) => {
+        if(oldImage.src != cmsImages[index].src){
+            oldImage.setAttribute("src", updatedImages[0])
+            updatedImages.shift();
+            if(oldImage.hasAttribute("srcset")){
+                oldImage.removeAttribute("srcset");
+                oldImage.onload = null;
+            }
+        }
     })
 }
 
