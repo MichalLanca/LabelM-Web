@@ -35,7 +35,7 @@
             <div class="filter_products w-full lg:w-72 overflow-y-auto overflow-x-hidden p-0 z-20" style="display: none; height: calc(100vh - 90px);">
                 <ul class="list-none w-full lg:w-72 list_products h-full">
                     <template id="item-template">
-                        <li class="bg-teal-900 text-center h-[54px] text-white p-2 hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex justify-center items-center">
+                        <li class="bg-teal-900 text-center h-[54px] text-white p-2 hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex justify-center items-center z-20">
                             <button class="flex justify-center items-center">
                                 <h2 class="uppercase font-semimedium">Name of item</h2>
                             </button>
@@ -43,7 +43,7 @@
                     </template>
                 </ul>
             </div>
-            <div class="list_menu absolute top-[90px] z-10 w-full">
+            <div class="list_menu absolute top-[90px] z-20 w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#343f4a"
                 height="40" width="40" version="1.1" id="exitNav" viewBox="0 0 52.502 52.502" xml:space="preserve"
                 class="w-full min-h-[54px] flex border-2 border-t-0 border-gray-600 items-center justify-center hover:bg-gray-400 cursor-pointer lg:hidden">
@@ -52,39 +52,65 @@
                 </svg>
                 <button class="w-full lg:w-72 h-[54px] border-2 border-t-0 border-gray-600 bg-putty-600 text-teal-900 text-center uppercase font-semimedium open_filter_button hover:bg-gray-400" style="display: block;">vyhledat produkt
                 </button>
-                    <a href="uvodni-stranka" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">domovská stránka</span>
+                <div class="overflow-y-auto z-20" style="height: calc(100vh - 90px);">
+                    <a href="uvodni-stranka" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 cursor-pointer flex items-center justify-center group border-b-2 border-gray-600 z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">domovská stránka</span>
                     </a>
-                    <a href="produkty" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">produkty</span>
+                    <a href="produkty" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">produkty</span>
                     </a>
-                    <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">individuální péče o vlasy</span>
+                    <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">individuální péče o vlasy</span>
                     </a>
-                    <a href="o-nas" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">o nás</span>
+                    <a href="o-nas" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center about group">
+                        <span class="uppercase font-semimedium group-hover:scale-110">o nás</span>
                     </a>
-                    <a href="profesionalove" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">profesionálové</span>
+                    <a href="o-nas/dedictvi" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 items-center justify-center hidden about_btns group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">dědictví</span>
                     </a>
-                    <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">vyhledávač salónů</span>
+                    <a href="o-nas/vzdelavani" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">vzdělávání</span>
                     </a>
-                    <a href="my-labelm" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">#mylabelm</span>
+                    <a href="o-nas/odbornost" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">odbornost</span>
                     </a>
-                    <a href="jednotlive-produkty" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">jednotlivé produkty</span>
+                    <a href="o-nas/moda" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">móda</span>
                     </a>
-                    <a href="socialni-site" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">sociální sítě</span>
+                    <a href="o-nas/biokompatibilita" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">biokompabilita</span>
                     </a>
-                    <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">patička</span>
+                    <a href="o-nas/udrzitelnost" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">udržitelnost</span>
                     </a>
-                    <a href="uprava-menu" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600 flex items-center justify-center">
-                        <span class="uppercase font-semimedium">úprava menu</span>
+                    <a href="o-nas/matrix" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">matrix</span>
                     </a>
+                    <a href="o-nas/digitalni-inovace" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">digitální inovace</span>
+                    </a>
+                    <a href="profesionalove" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">profesionálové</span>
+                    </a>
+                    <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">vyhledávač salónů</span>
+                    </a>
+                    <a href="my-labelm" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">#mylabelm</span>
+                    </a>
+                    <a href="jednotlive-produkty" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">jednotlivé produkty</span>
+                    </a>
+                    <a href="socialni-site" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">sociální sítě</span>
+                    </a>
+                    <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">patička</span>
+                    </a>
+                    <a href="uprava-menu" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group z-20">
+                        <span class="uppercase font-semimedium group-hover:scale-110">úprava menu</span>
+                    </a>
+                </div>    
             </div>
             <div class="absolute bottom-2 text-center w-72 z-0">
                 <p class="text-gray-600">Central Management System</p>

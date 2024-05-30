@@ -7,6 +7,62 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
+::-webkit-scrollbar {
+  width: 5px;
+  padding: 0px 0px;
+  margin: 0px 0px;
+} 
+::-webkit-scrollbar-thumb{background: #293831}
+
+@font-face {
+  font-family: 'FuturaPTLight';
+  src: url('font/FuturaPTLight.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTBold';
+  src: url('font/FuturaPTExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'FuturaPTMedium';
+  src: url('font/FuturaPTMedium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTHeavy';
+  src: url('font/FuturaPTHeavy.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}  
+
+@media (min-width: 1024px) {
+  .prose img {
+    margin-left: -11rem;
+    margin-right: -11rem;
+    max-width: none;
+    width: calc(100% + 22rem);
+  }
+}
+
+.text-gold {
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(5deg, #e6e19f, #b3ad83);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.aspect-portrait {
+  aspect-ratio: 4/5; /* Definuje poměr stran 4:5 */
+}  
+
 *,
 ::before,
 ::after {

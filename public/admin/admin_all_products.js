@@ -624,6 +624,42 @@ function responsiveMenu(){
             }
         }
     })
+
+    const buttons = document.querySelectorAll(".about_btns")
+    const mainBtn = document.querySelector(".about")
+    let clicked = false
+
+    mainBtn.addEventListener("click", (e) => {
+        if(!clicked){
+            e.preventDefault()
+            buttons.forEach((button) => {
+                button.style.display = "flex"
+                mainBtn.style.backgroundColor = "rgb(156 163 175)"
+                clicked = true
+            })
+        }           
+    })
+
+    main.addEventListener("click", (e) => {
+        if(clicked){
+            buttons.forEach((button) => {
+                button.style.display = "none"
+                mainBtn.style.backgroundColor = "rgba(52, 63, 74, 1)"
+                clicked = false
+            })
+        }
+    })
+
+    bg.addEventListener("click", () => {
+        nav.style.display = "none"
+        openNav = false
+        main.removeChild(bg)
+        buttons.forEach((button) => {
+            button.style.display = "none"
+            mainBtn.style.backgroundColor = "rgba(52, 63, 74, 1)"
+            clicked = false
+        })
+    })
 }
 
 
