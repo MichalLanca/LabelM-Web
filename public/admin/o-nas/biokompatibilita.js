@@ -6,7 +6,7 @@ let uploadedImages = [];
 let children;
 
 document.addEventListener("DOMContentLoaded", async () => {
-    // const response = await fetch("https://my-labelm.cz/api/html/about_us");
+    // const response = await fetch("https://my-labelm.cz/api/html/about_us/biocompatibility");
     const response = await fetch("http://localhost:8080/api/html/about_us/biocompatibility");
     const htmlContent = await response.text();
     div = document.createElement("div");

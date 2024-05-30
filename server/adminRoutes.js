@@ -141,6 +141,15 @@ router.get("/o-nas/biokompatibilita.html", cors(), async (req, res) => {
     return res.redirect("/o-nas/biokompatibilita")   
 })
 
+router.get("/o-nas/vzdelavani", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/o-nas/vzdelavani.html'))
+})
+
+router.get("/o-nas/vzdelavani.html", cors(), async (req, res) => {
+    return res.redirect("/o-nas/vzdelavani")   
+})
+
 
 router.get("/uprava-menu", cors(), requireAuth, async (req, res) => {
 
