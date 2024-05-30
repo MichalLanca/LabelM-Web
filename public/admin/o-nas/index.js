@@ -14,13 +14,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     div.innerHTML = htmlContent;
     children = Array.from(div.children);
 
-    openBlock();
-
     await firstBlock(children[1]);
     await secondBlock(children[2]);
     await thirdBlock(children[3]);
     await fourthBlock(children[4]);
 
+    openBlock();
     updateChangedImages();
     updateVideo();
     responsiveMenu();
@@ -146,6 +145,7 @@ function updateFourthBlock(oldHtml, cmsHtml, updatedImages){
 
     return oldHtml;
 }
+
 function updateChangedImages() {
     const inputs = document.querySelectorAll("input[type='file']");
     const image = document.querySelectorAll(".content img")
@@ -238,6 +238,7 @@ async function sentImage(files) {
         }
     }
 }
+
 function openBlock(){
     const sections = document.querySelectorAll(".content section");
     sections.forEach((section) => {
@@ -323,4 +324,42 @@ function responsiveMenu(){
             }
         }
     })
+
+    const buttons = document.querySelectorAll(".about_btns")
+    const mainBtn = document.querySelector(".about")
+    let clicked = false
+
+    mainBtn.addEventListener("click", (e) => {
+        if(!clicked){
+            e.preventDefault()
+            buttons.forEach((button) => {
+                button.style.display = "flex"
+                mainBtn.style.backgroundColor = "rgb(156 163 175)"
+                clicked = true
+            })
+        }           
+    })
+
+    main.addEventListener("click", (e) => {
+        if(clicked){
+            buttons.forEach((button) => {
+                button.style.display = "none"
+                mainBtn.style.backgroundColor = "rgba(52, 63, 74, 1)"
+                clicked = false
+            })
+        }
+    })
+
+    bg.addEventListener("click", () => {
+        nav.style.display = "none"
+        openNav = false
+        main.removeChild(bg)
+        buttons.forEach((button) => {
+            button.style.display = "none"
+            mainBtn.style.backgroundColor = "rgba(52, 63, 74, 1)"
+            clicked = false
+        })
+    })
+
 }
+

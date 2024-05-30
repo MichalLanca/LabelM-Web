@@ -154,6 +154,23 @@ router.get("/html/products", cors(), async (req, res) => {
     });    
 })
 
+router.get("/html/about_us/heritage", cors(), async (req, res) => {
+    const filename = "dedictvi.html"
+    const filePath = path.join(__dirname, "..", "public/o-nas", filename);
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Nastala chyba při čtení souboru:", err);
+            res.status(500).send("Nastala chyba při čtení souboru.");
+            return;
+        }
+
+        const html = extractMainInnerHTML(data);
+
+        res.send(html);
+    });    
+})
+
 function extractSections(htmlString) {
     const regex = /<main[^>]*>[\s\S]*?<\/main>/gi;
     const mainContent = (htmlString.match(regex) || [])[0] || '';

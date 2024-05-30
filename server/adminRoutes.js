@@ -116,12 +116,22 @@ router.get("/my-labelm.html", cors(), async (req, res) => {
 
 router.get("/o-nas", cors(), requireAuth, async (req, res) => {
 
-    return res.sendFile(path.resolve(__dirname, '../public/admin/o-nas.html'))
+    return res.sendFile(path.resolve(__dirname, '../public/admin/o-nas/index.html'))
 })
 
 router.get("/o-nas.html", cors(), async (req, res) => {
     return res.redirect("/admin/o-nas")   
 })
+
+router.get("/o-nas/dedictvi", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/o-nas/dedictvi.html'))
+})
+
+router.get("/o-nas/dedictvi.html", cors(), async (req, res) => {
+    return res.redirect("/o-nas/dedictvi")   
+})
+
 
 router.get("/uprava-menu", cors(), requireAuth, async (req, res) => {
 

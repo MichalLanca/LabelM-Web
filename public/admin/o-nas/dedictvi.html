@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="label.m - oficiální péče o vlasy londýnského týdne módy - je oceňovaná řada inspirovaná módou, kterou vyvinuli profesionální stylisté pod kreativním dohledem dynamického mezinárodního uměleckého týmu pod vedením Toniho Mascola a Sachy Mascola-Tarbucka.">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../styles_admin.css">
+    <title>LabelM</title>
+</head>
+
+<body class="antialiased bg-putty-200 font-display">
+    <nav class="w-full hidden lg:flex lg:flex-col sm:w-72 fixed z-50 h-full bg-putty-600">
+        <div class="list_menu absolute z-10 w-full h-full">
+            <button
+                class="w-full lg:w-72 h-[90px] outline-none text-center text-white p-2 lg:hover:bg-gray-400 cursor-pointer border-b-2 border-gray-600"
+                style="background-color: rgb(41, 49, 56);">
+                <a href="#">
+                    <span class="uppercase text-3xl font-extrabold border-2 rounded-[50%] p-4">ML</span>
+                </a>
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#343f4a"
+                height="40" width="40" version="1.1" id="exitNav" viewBox="0 0 52.502 52.502" xml:space="preserve"
+                class="w-full min-h-[54px] flex border-2 border-t-0 border-gray-600 items-center justify-center hover:bg-gray-400 cursor-pointer lg:hidden">
+                <path
+                    d="M51.718,50.857l-1.341-2.252C40.075,31.295,25.975,32.357,22.524,32.917v13.642L0,23.995L22.524,1.644v13.43  c0.115,0,0.229-0.001,0.344-0.001c12.517,0,18.294,5.264,18.542,5.496c13.781,11.465,10.839,27.554,10.808,27.715L51.718,50.857z   M25.505,30.735c5.799,0,16.479,1.923,24.993,14.345c0.128-4.872-0.896-15.095-10.41-23.012c-0.099-0.088-5.935-5.364-18.533-4.975  l-1.03,0.03V6.447L2.832,24.001l17.692,17.724V31.311l0.76-0.188C21.338,31.109,22.947,30.735,25.505,30.735z" />
+            </svg>
+            <div class="overflow-y-auto" style="height: calc(100vh - 90px);">
+                <a href="uvodni-stranka" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2 cursor-pointer flex items-center justify-center group border-b-2 border-gray-600">
+                    <span class="uppercase font-semimedium group-hover:scale-110">domovská stránka</span>
+                </a>
+                <a href="produkty" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">produkty</span>
+                </a>
+                <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">individuální péče o vlasy</span>
+                </a>
+                <a href="o-nas" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center about group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">o nás</span>
+                </a>
+                <a href="o-nas/dedictvi" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 items-center justify-center hidden about_btns group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">dědictví</span>
+                </a>
+                <a href="o-nas/vzdelavani" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">vzdělávání</span>
+                </a>
+                <a href="o-nas/odbornost" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">odbornost</span>
+                </a>
+                <a href="o-nas/moda" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">móda</span>
+                </a>
+                <a href="o-nas/biokompatibilita" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">biokompabilita</span>
+                </a>
+                <a href="o-nas/udrzitelnost" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">udržitelnost</span>
+                </a>
+                <a href="o-nas/matrix" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">matrix</span>
+                </a>
+                <a href="o-nas/digitalni-inovace" class="w-full lg:w-72 h-[54px] outline-none bg-gray-400 text-center text-white p-2 cursor-pointer border-b-2 border-gray-600 hidden items-center justify-center about_btns group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">digitální inovace</span>
+                </a>
+                <a href="profesionalove" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">profesionálové</span>
+                </a>
+                <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">vyhledávač salónů</span>
+                </a>
+                <a href="my-labelm" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">#mylabelm</span>
+                </a>
+                <a href="jednotlive-produkty" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">jednotlivé produkty</span>
+                </a>
+                <a href="socialni-site" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">sociální sítě</span>
+                </a>
+                <a href="" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">patička</span>
+                </a>
+                <a href="uprava-menu" class="w-full lg:w-72 h-[54px] outline-none bg-teal-900 text-center text-white p-2  cursor-pointer border-b-2 border-gray-600 flex items-center justify-center group">
+                    <span class="uppercase font-semimedium group-hover:scale-110">úprava menu</span>
+                </a>
+            </div>    
+        </div>
+        <div class="absolute bottom-2 text-center w-full z-0">
+            <p class="text-gray-600">Central Management System</p>
+            <p class="text-gray-600">LabelM</p>
+        </div>
+    </nav>
+    <main class="lg:ml-72">
+        <section
+            class="relative flex items-center justify-center md:aspect-auto h-[280px] md:min-h-[380px] lg:min-h-[300px]">
+            <img alt="Education" class="absolute object-cover w-full h-full" loading="lazy"
+                srcset="https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_2560_1440.jpg 2560w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_2141_1204.jpg 2141w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_1791_1007.jpg 1791w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_1499_843.jpg 1499w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_1254_705.jpg 1254w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_1049_590.jpg 1049w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_878_493.jpg 878w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_734_412.jpg 734w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_614_345.jpg 614w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_514_289.jpg 514w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_430_241.jpg 430w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_359_201.jpg 359w, https://d3tlyp20mcsecl.cloudfront.net/media-library/639/responsive-images/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e___media_library_original_301_169.jpg 301w, data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHg9IjAiCiB5PSIwIiB2aWV3Qm94PSIwIDAgMjU2MCAxNDQwIj4KCTxpbWFnZSB3aWR0aD0iMjU2MCIgaGVpZ2h0PSIxNDQwIiB4bGluazpocmVmPSJkYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUVBWUFCZ0FBRC8vZ0E3UTFKRlFWUlBVam9nWjJRdGFuQmxaeUIyTVM0d0lDaDFjMmx1WnlCSlNrY2dTbEJGUnlCMk9EQXBMQ0J4ZFdGc2FYUjVJRDBnT1RBSy85c0FRd0FEQWdJREFnSURBd01EQkFNREJBVUlCUVVFQkFVS0J3Y0dDQXdLREF3TENnc0xEUTRTRUEwT0VRNExDeEFXRUJFVEZCVVZGUXdQRnhnV0ZCZ1NGQlVVLzlzQVF3RURCQVFGQkFVSkJRVUpGQTBMRFJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVVGQlFVRkJRVUZCUVUvOEFBRVFnQUVnQWdBd0VSQUFJUkFRTVJBZi9FQUI4QUFBRUZBUUVCQVFFQkFBQUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVRQUFJQkF3TUNCQU1GQlFRRUFBQUJmUUVDQXdBRUVRVVNJVEZCQmhOUllRY2ljUlF5Z1pHaENDTkNzY0VWVXRId0pETmljb0lKQ2hZWEdCa2FKU1luS0NrcU5EVTJOemc1T2tORVJVWkhTRWxLVTFSVlZsZFlXVnBqWkdWbVoyaHBhbk4wZFhaM2VIbDZnNFNGaG9lSWlZcVNrNVNWbHBlWW1acWlvNlNscHFlb3FhcXlzN1MxdHJlNHVickN3OFRGeHNmSXljclMwOVRWMXRmWTJkcmg0dVBrNWVibjZPbnE4Zkx6OVBYMjkvajUrdi9FQUI4QkFBTUJBUUVCQVFFQkFRRUFBQUFBQUFBQkFnTUVCUVlIQ0FrS0MvL0VBTFVSQUFJQkFnUUVBd1FIQlFRRUFBRUNkd0FCQWdNUkJBVWhNUVlTUVZFSFlYRVRJaktCQ0JSQ2thR3h3UWtqTTFMd0ZXSnkwUW9XSkRUaEpmRVhHQmthSmljb0tTbzFOamM0T1RwRFJFVkdSMGhKU2xOVVZWWlhXRmxhWTJSbFptZG9hV3B6ZEhWMmQzaDVlb0tEaElXR2g0aUppcEtUbEpXV2w1aVptcUtqcEtXbXA2aXBxckt6dExXMnQ3aTV1c0xEeE1YR3g4akp5dExUMU5YVzE5aloydUxqNU9YbTUranA2dkx6OVBYMjkvajUrdi9hQUF3REFRQUNFUU1SQUQ4QSt0cTRqMVJ4NlVyQ3VaR3M2bU5QQzUvaU9LeHFTNUZjNktVT2QyTGRwTDVzS1A2ak5UVG56b3VyUzVDelhTY3BJcWwyQ2pxYUNTSFd2QmR4cTF1aFVjZzVGWTFJOHlPaWpVOW5LNU1ORm0weTFpU1JlUU90WjA0Y3ExTmExWlZIb0pXNXlFMW4vd0FmQ2ZXcUVqdXJUN2tYMHBpWlY4U0tQSUhBcHNsSC85az0iPgoJPC9pbWFnZT4KPC9zdmc+ 32w"
+                onload="window.requestAnimationFrame(function(){if(!(size=getBoundingClientRect().width))return;onload=null;sizes=Math.ceil(size/window.innerWidth*100)+'vw';});"
+                sizes="100vw"
+                src="https://d3tlyp20mcsecl.cloudfront.net/media-library/639/51aebb7d01fd1e15eedc19e54f2f5e9533dbbe5e.jpg"
+                width="2560" height="1440">
+
+            <div class="px-3.5 py-8 md:px-0 text-center text-white z-10 md:w-[512px] lg:w-[800px]">
+                <h1
+                    class="text-4xl font-extrabold uppercase md:text-6xl xl:text-7xl leading-[31px] md:leading-[55px] lg:leading-[66px] tracking-[-.04em]">
+                    dědictví</h1>
+            </div>
+        </section>
+        <div class="content w-full px-8 pt-4">
+            <div class="relative content_header mb-4 flex">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#343f4a"
+                height="40px" width="40px" version="1.1" id="navBtn" viewBox="0 0 297 297" xml:space="preserve"
+                class="cursor-pointer lg:hidden">
+                <g>
+                    <g>
+                        <g>
+                            <path
+                                d="M279.368,24.726H102.992c-9.722,0-17.632,7.91-17.632,17.632V67.92c0,9.722,7.91,17.632,17.632,17.632h176.376     c9.722,0,17.632-7.91,17.632-17.632V42.358C297,32.636,289.09,24.726,279.368,24.726z" />
+                            <path
+                                d="M279.368,118.087H102.992c-9.722,0-17.632,7.91-17.632,17.632v25.562c0,9.722,7.91,17.632,17.632,17.632h176.376     c9.722,0,17.632-7.91,17.632-17.632v-25.562C297,125.997,289.09,118.087,279.368,118.087z" />
+                            <path
+                                d="M279.368,211.448H102.992c-9.722,0-17.632,7.91-17.632,17.633v25.561c0,9.722,7.91,17.632,17.632,17.632h176.376     c9.722,0,17.632-7.91,17.632-17.632v-25.561C297,219.358,289.09,211.448,279.368,211.448z" />
+                            <path
+                                d="M45.965,24.726H17.632C7.91,24.726,0,32.636,0,42.358V67.92c0,9.722,7.91,17.632,17.632,17.632h28.333     c9.722,0,17.632-7.91,17.632-17.632V42.358C63.597,32.636,55.687,24.726,45.965,24.726z" />
+                            <path
+                                d="M45.965,118.087H17.632C7.91,118.087,0,125.997,0,135.719v25.562c0,9.722,7.91,17.632,17.632,17.632h28.333     c9.722,0,17.632-7.91,17.632-17.632v-25.562C63.597,125.997,55.687,118.087,45.965,118.087z" />
+                            <path
+                                d="M45.965,211.448H17.632C7.91,211.448,0,219.358,0,229.081v25.561c0,9.722,7.91,17.632,17.632,17.632h28.333     c9.722,0,17.632-7.91,17.632-17.632v-25.561C63.597,219.358,55.687,211.448,45.965,211.448z" />
+                        </g>
+                    </g>
+                </g>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#343f4a"
+                    version="1.1" id="saveBtn" width="40px" height="40px" viewBox="0 0 488.446 488.446"
+                    xml:space="preserve" class="cursor-pointer" style="margin-left: auto;">
+                    <g>
+                        <g>
+                            <g>
+                                <path
+                                    d="M153.029,90.223h182.404c5.427,0,9.873-4.43,9.873-9.869V0H143.137v80.354C143.137,85.793,147.571,90.223,153.029,90.223     z" />
+                                <path
+                                    d="M480.817,122.864L377.88,19.494v60.859c0,23.404-19.043,42.447-42.447,42.447H153.029     c-23.409,0-42.447-19.043-42.447-42.447V0H44.823C20.068,0,0.002,20.07,0.002,44.808v398.831     c0,24.736,20.066,44.808,44.821,44.808h398.813c24.74,0,44.808-20.068,44.808-44.808V141.325     C488.444,134.392,485.698,127.758,480.817,122.864z M412.461,385.666c0,14.434-11.703,26.154-26.168,26.154H102.137     c-14.451,0-26.153-11.722-26.153-26.154V249.303c0-14.43,11.702-26.148,26.153-26.148h284.156     c14.465,0,26.168,11.72,26.168,26.148V385.666z" />
+                                <path
+                                    d="M356.497,265.131H131.949c-9.008,0-16.294,7.273-16.294,16.28s7.286,16.28,16.294,16.28h224.549     c8.988,0,16.277-7.273,16.277-16.28S365.487,265.131,356.497,265.131z" />
+                                <path
+                                    d="M323.936,330.264H164.508c-8.994,0-16.28,7.273-16.28,16.28c0,8.989,7.286,16.28,16.28,16.28h159.427     c8.994,0,16.281-7.291,16.281-16.28C340.217,337.537,332.93,330.264,323.936,330.264z" />
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <div>
+                <section class="bg-putty-600 mb-8">
+                    <div class="flex justify-between bg-teal-900">
+                        <h2 class="uppercase font-semimedium text-3xl text-white p-4">blok 1
+                        </h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="#ffffff" class="my-auto mr-4 cursor-pointer open_exit_button" style="transform: rotate(0deg);">
+                            <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z" />
+                            <path
+                                d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z" />
+                        </svg>
+                    </div>
+                    <div class="tab">
+                        <div class="tab_content xl:flex">
+                            <div class="xl:w-1/2 image p-4">
+                                <img src="" alt="">
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white mt-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file" style="display: none;">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="xl:w-1/2 text p-4 relative">
+                                <div>
+                                    <div class="xl:flex my-4 items-center">
+                                        <h3 class="text-center xl:w-1/2 xl:text-right text-lg pr-1">Nadpis bloku: </h3>
+                                        <input type="text"
+                                            class="w-full mx-auto block md:w-2/3 xl:w-1/2 xl:ml-1 h-12 pl-2 outline-none text-left"
+                                            placeholder="">
+                                    </div>
+                                    <div class="xl:flex my-4">
+                                        <h3 class="text-center xl:w-1/2 xl:text-right pt-3 text-lg pr-1">Menší popisek: </h3>
+                                        <textarea name="" id="" class="w-full p-2 mx-auto block mb-2 outline-none md:w-2/3 xl:w-1/2" rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-putty-600 mb-8">
+                    <div class="flex justify-between bg-teal-900">
+                        <h2 class="uppercase font-semimedium text-3xl text-white p-4">blok 2
+                        </h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="#ffffff" class="my-auto mr-4 cursor-pointer open_exit_button" style="transform: rotate(0deg);">
+                            <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z" />
+                            <path
+                                d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z" />
+                        </svg>
+                    </div>
+                    <div class="tab">
+                        <div class="tab_content article py-4 lg:py-8 px-4">
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="8"></textarea>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="8"></textarea>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="2"></textarea>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="2"></textarea>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="2"></textarea>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="2"></textarea>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="2"></textarea>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="2"></textarea>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="2"></textarea>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="2"></textarea>
+                            </div>
+                            <div class="mx-auto w-full h-full max-h-[500px] mb-8">
+                                <div class="flex items-center justify-center image max-h-[400px]">
+                                    <img src="" alt="" class="max-h-[400px]">
+                                </div>
+                                <div class="w-full">
+                                    <label class="w-48 h-12 bg-teal-900 p-2 text-white m-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center items-center mx-auto">
+                                        <span>nahrát obrázek</span>
+                                        <input type="file"  style="display: none;" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="2"></textarea>
+                            </div>
+                            <div class="text flex justify-center mb-8">
+                                <textarea name="" id="" class="w-full max-w-[765px] p-2" rows="1"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-putty-600 mb-8">
+                    <div class="flex justify-between bg-teal-900">
+                        <h2 class="uppercase font-semimedium text-3xl text-white p-4">blok 3
+                        </h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                            fill="#ffffff" class="my-auto mr-4 cursor-pointer open_exit_button" style="transform: rotate(0deg);">
+                            <path d="m12 6.414 7.293 7.293 1.414-1.414L12 3.586l-8.707 8.707 1.414 1.414L12 6.414z" />
+                            <path
+                                d="m3.293 18.293 1.414 1.414L12 12.414l7.293 7.293 1.414-1.414L12 9.586l-8.707 8.707z" />
+                        </svg>
+                    </div>
+                    <div class="tab">
+                        <div class="tab_content article py-4 lg:py-8 px-4">
+                            <div class="flex">
+                                <div class="w-1/2">
+                                    <div class="image p-4">
+                                        <img src="" alt="">
+                                        <div class="w-full">
+                                            <label class="w-[194px] h-[40px] bg-teal-900 p-2 text-white mt-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center mx-auto">
+                                                <span>nahrát obrázek</span>
+                                                <input type="file" style="display: none;">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="text p-4 relative">
+                                        <div class="flex m-4">
+                                            <input type="text" class="w-full ml-1 h-12 pl-2 outline-none text-center"
+                                                placeholder="nadpis">
+                                        </div>
+                                        <div class="flex m-4">
+                                            <textarea name="" id="" class="w-full text-center ml-1" rows="2" placeholder="popis"></textarea>
+                                        </div>
+                                        <div class="flex m-4">
+                                            <input type="text" class="w-full ml-1 h-12 pl-2 outline-none text-center"
+                                                placeholder="odkaz">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-1/2">
+                                    <div class="image p-4">
+                                        <img src="" alt="">
+                                        <div class="w-full">
+                                            <label class="w-[194px] h-[40px] bg-teal-900 p-2 text-white mt-3 hover:bg-gray-400 text-center cursor-pointer flex justify-center mx-auto">
+                                                <span>nahrát obrázek</span>
+                                                <input type="file" style="display: none;">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="text p-4 relative">
+                                        <div class="flex m-4">
+                                            <input type="text" class="w-full ml-1 h-12 pl-2 outline-none text-center"
+                                                placeholder="nadpis">
+                                        </div>
+                                        <div class="flex m-4">
+                                            <textarea name="" id="" class="w-full text-center ml-1" rows="2" placeholder="popis"></textarea>
+                                        </div>
+                                        <div class="flex m-4">
+                                            <input type="text" class="w-full ml-1 h-12 pl-2 outline-none text-center"
+                                                placeholder="odkaz">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script src="dedictvi.js"></script>
+</body>
+</html>
