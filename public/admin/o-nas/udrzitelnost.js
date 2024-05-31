@@ -307,26 +307,46 @@ function responsiveMenu(){
 
     const buttons = document.querySelectorAll(".about_btns")
     const mainBtn = document.querySelector(".about")
-    let clicked = false
+    let clickedA = false
 
     mainBtn.addEventListener("click", (e) => {
-        if(!clicked){
+        if(!clickedA){
             e.preventDefault()
             buttons.forEach((button) => {
                 button.style.display = "flex"
                 mainBtn.style.backgroundColor = "rgb(156 163 175)"
-                clicked = true
+                clickedA = true
             })
         }           
     })
 
+    const fashionButtons = document.querySelectorAll(".fashion_btns")
+    const fashionMain = document.querySelector(".fashion")
+    let clickedB = false
+
+    fashionMain.addEventListener("click", (e) => {
+        if(!clickedB){
+            e.preventDefault()
+            fashionButtons.forEach((button) => {
+                button.style.display = "flex"
+                fashionMain.style.backgroundColor = "rgb(156 163 175)"
+                clickedB = true
+            })
+        }
+    })
+
     main.addEventListener("click", (e) => {
-        if(clicked){
+        if(clickedA || clickedB){
             buttons.forEach((button) => {
                 button.style.display = "none"
-                mainBtn.style.backgroundColor = "rgba(52, 63, 74, 1)"
-                clicked = false
             })
+            fashionButtons.forEach((button) => {
+                button.style.display = "none"
+            })
+            mainBtn.style.backgroundColor = "rgba(52, 63, 74, 1)"
+            fashionMain.style.backgroundColor = "rgba(52, 63, 74, 1)"
+            clickedA = false
+            clickedB = false
         }
     })
 
@@ -336,9 +356,16 @@ function responsiveMenu(){
         main.removeChild(bg)
         buttons.forEach((button) => {
             button.style.display = "none"
-            mainBtn.style.backgroundColor = "rgba(52, 63, 74, 1)"
-            clicked = false
         })
+        fashionButtons.forEach((button) => {
+            button.style.display = "none"
+        })
+        mainBtn.style.backgroundColor = "rgba(52, 63, 74, 1)"
+        fashionMain.style.backgroundColor = "rgba(52, 63, 74, 1)"
+        clickedA = false
+        clickedB = false
     })
+
+ 
 
 }

@@ -324,6 +324,57 @@ router.get("/html/fashion_trends/volume", cors(), async (req, res) => {
     });    
 })
 
+router.get("/html/fashion_trends/curls", cors(), async (req, res) => {
+    const filename = "aw22-vytvarime-vlny.html"
+    const filePath = path.join(__dirname, "..", "public/moda-a-trendy", filename);
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Nastala chyba při čtení souboru:", err);
+            res.status(500).send("Nastala chyba při čtení souboru.");
+            return;
+        }
+
+        const html = extractMainInnerHTML(data);
+
+        res.send(html);
+    });    
+})
+
+router.get("/html/fashion_trends/slicked", cors(), async (req, res) => {
+    const filename = "aw22-uhlazene-dozadu.html"
+    const filePath = path.join(__dirname, "..", "public/moda-a-trendy", filename);
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Nastala chyba při čtení souboru:", err);
+            res.status(500).send("Nastala chyba při čtení souboru.");
+            return;
+        }
+
+        const html = extractMainInnerHTML(data);
+
+        res.send(html);
+    });    
+})
+
+router.get("/html/fashion_trends/node", cors(), async (req, res) => {
+    const filename = "aw22-krouceny-uzel.html"
+    const filePath = path.join(__dirname, "..", "public/moda-a-trendy", filename);
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Nastala chyba při čtení souboru:", err);
+            res.status(500).send("Nastala chyba při čtení souboru.");
+            return;
+        }
+
+        const html = extractMainInnerHTML(data);
+
+        res.send(html);
+    });    
+})
+
 function extractSections(htmlString) {
     const regex = /<main[^>]*>[\s\S]*?<\/main>/gi;
     const mainContent = (htmlString.match(regex) || [])[0] || '';
@@ -834,6 +885,111 @@ router.post('/html/fashion_trends', cors(), async (req, res) => {
 router.post('/html/fashion_trends/volume', cors(), async (req, res) => {
     const modifiedSections = req.body; 
     const filename = "aw22-zvyste-objem.html";
+    const savePath = path.join(__dirname, '..', 'public/moda-a-trendy', filename); 
+
+    fs.readFile(savePath, 'utf8', (err, loadedHTML) => {
+        if (err) {
+            console.error("Nastala chyba při čtení souboru:", err);
+            res.status(500).send("Nastala chyba při čtení souboru.");
+            return;
+        }
+        const dom = new JSDOM(loadedHTML);
+        const document = dom.window.document;
+        const mainContent = document.querySelector("main");
+        mainContent.innerHTML = "";
+        const temporaryDiv = document.createElement("div");
+        temporaryDiv.innerHTML = modifiedSections;
+        const children = Array.from(temporaryDiv.children);
+        children.forEach((child) => {
+            mainContent.appendChild(child)
+        })
+        const updatedHTML = dom.serialize();
+
+        fs.writeFile(savePath, updatedHTML, (err) => {
+            if (err) {
+                console.error("Nastala chyba při ukládání upraveného HTML souboru:", err);
+                res.status(500).send("Nastala chyba při ukládání upraveného HTML souboru.");
+                return;
+            }
+            console.log("Upravený HTML byl úspěšně uložen na serveru.");
+            res.status(200).send("Upravený HTML byl úspěšně uložen na serveru.");
+        });
+    });
+});
+
+router.post('/html/fashion_trends/curls', cors(), async (req, res) => {
+    const modifiedSections = req.body; 
+    const filename = "aw22-vytvarime-vlny.html";
+    const savePath = path.join(__dirname, '..', 'public/moda-a-trendy', filename); 
+
+    fs.readFile(savePath, 'utf8', (err, loadedHTML) => {
+        if (err) {
+            console.error("Nastala chyba při čtení souboru:", err);
+            res.status(500).send("Nastala chyba při čtení souboru.");
+            return;
+        }
+        const dom = new JSDOM(loadedHTML);
+        const document = dom.window.document;
+        const mainContent = document.querySelector("main");
+        mainContent.innerHTML = "";
+        const temporaryDiv = document.createElement("div");
+        temporaryDiv.innerHTML = modifiedSections;
+        const children = Array.from(temporaryDiv.children);
+        children.forEach((child) => {
+            mainContent.appendChild(child)
+        })
+        const updatedHTML = dom.serialize();
+
+        fs.writeFile(savePath, updatedHTML, (err) => {
+            if (err) {
+                console.error("Nastala chyba při ukládání upraveného HTML souboru:", err);
+                res.status(500).send("Nastala chyba při ukládání upraveného HTML souboru.");
+                return;
+            }
+            console.log("Upravený HTML byl úspěšně uložen na serveru.");
+            res.status(200).send("Upravený HTML byl úspěšně uložen na serveru.");
+        });
+    });
+});
+
+router.post('/html/fashion_trends/slicked', cors(), async (req, res) => {
+    const modifiedSections = req.body; 
+    const filename = "aw22-uhlazene-dozadu.html";
+    const savePath = path.join(__dirname, '..', 'public/moda-a-trendy', filename); 
+
+    fs.readFile(savePath, 'utf8', (err, loadedHTML) => {
+        if (err) {
+            console.error("Nastala chyba při čtení souboru:", err);
+            res.status(500).send("Nastala chyba při čtení souboru.");
+            return;
+        }
+        const dom = new JSDOM(loadedHTML);
+        const document = dom.window.document;
+        const mainContent = document.querySelector("main");
+        mainContent.innerHTML = "";
+        const temporaryDiv = document.createElement("div");
+        temporaryDiv.innerHTML = modifiedSections;
+        const children = Array.from(temporaryDiv.children);
+        children.forEach((child) => {
+            mainContent.appendChild(child)
+        })
+        const updatedHTML = dom.serialize();
+
+        fs.writeFile(savePath, updatedHTML, (err) => {
+            if (err) {
+                console.error("Nastala chyba při ukládání upraveného HTML souboru:", err);
+                res.status(500).send("Nastala chyba při ukládání upraveného HTML souboru.");
+                return;
+            }
+            console.log("Upravený HTML byl úspěšně uložen na serveru.");
+            res.status(200).send("Upravený HTML byl úspěšně uložen na serveru.");
+        });
+    });
+});
+
+router.post('/html/fashion_trends/node', cors(), async (req, res) => {
+    const modifiedSections = req.body; 
+    const filename = "aw22-krouceny-uzel.html";
     const savePath = path.join(__dirname, '..', 'public/moda-a-trendy', filename); 
 
     fs.readFile(savePath, 'utf8', (err, loadedHTML) => {

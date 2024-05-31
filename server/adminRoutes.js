@@ -200,8 +200,8 @@ router.get("/moda-a-trendy", cors(), requireAuth, async (req, res) => {
     return res.sendFile(path.resolve(__dirname, '../public/admin/moda-a-trendy/index.html'))
 })
 
-router.get("/o-nas/moda-a-trendy.html", cors(), async (req, res) => {
-    return res.redirect("/o-nas/moda-a-trendy")   
+router.get("/moda-a-trendy.html", cors(), async (req, res) => {
+    return res.redirect("/moda-a-trendy")   
 })
 
 router.get("/moda-a-trendy/zvyste-objem", cors(), requireAuth, async (req, res) => {
@@ -209,8 +209,35 @@ router.get("/moda-a-trendy/zvyste-objem", cors(), requireAuth, async (req, res) 
     return res.sendFile(path.resolve(__dirname, '../public/admin/moda-a-trendy/zvyste-objem.html'))
 })
 
-router.get("/o-nas/moda-a-trendy/zvyste-objem.html", cors(), async (req, res) => {
-    return res.redirect("/o-nas/moda-a-trendy/zvyste-objem")   
+router.get("/moda-a-trendy/zvyste-objem.html", cors(), async (req, res) => {
+    return res.redirect("/moda-a-trendy/zvyste-objem")   
+})
+
+router.get("/moda-a-trendy/vytvarime-vlny", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/moda-a-trendy/vytvarime-vlny.html'))
+})
+
+router.get("/moda-a-trendy/vytvarime-vlny.html", cors(), async (req, res) => {
+    return res.redirect("/moda-a-trendy/vytvarime-vlny")   
+})
+
+router.get("/moda-a-trendy/uhlazene-dozadu", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/moda-a-trendy/uhlazene-dozadu.html'))
+})
+
+router.get("/moda-a-trendy/uhlazene-dozadu.html", cors(), async (req, res) => {
+    return res.redirect("/moda-a-trendy/uhlazene-dozadu")   
+})
+
+router.get("/moda-a-trendy/krouceny-uzel", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/moda-a-trendy/krouceny-uzel.html'))
+})
+
+router.get("/moda-a-trendy/krouceny-uzel.html", cors(), async (req, res) => {
+    return res.redirect("/moda-a-trendy/krouceny-uzel")   
 })
 
 router.get("/uprava-menu", cors(), requireAuth, async (req, res) => {

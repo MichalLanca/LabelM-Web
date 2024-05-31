@@ -6,7 +6,7 @@ let uploadedImages = [];
 let children;
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const response = await fetch("http://localhost:8080/api/html/fashion_trends/volume");
+    const response = await fetch("http://localhost:8080/api/html/fashion_trends/curls");
     const htmlContent = await response.text();
     div = document.createElement("div");
     div.innerHTML = htmlContent;
@@ -89,7 +89,6 @@ async function secondBlock(html){
         links[index * 2].value = b.textContent
         links[index * 2 + 1].value = b.href
     })
-    
 } 
 
 
@@ -151,7 +150,7 @@ function updateSecondBlock(oldHtml, cmsHtml, updatedImages){
 
 async function sendHTML(html){
     try {
-        const response = await fetch('http://localhost:8080/api/html/fashion_trends/volume', {
+        const response = await fetch('http://localhost:8080/api/html/fashion_trends/curls', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'text/html' 
