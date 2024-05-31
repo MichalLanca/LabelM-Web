@@ -6,7 +6,7 @@ let uploadedImages = [];
 let children;
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const response = await fetch("http://localhost:8080/api/html/professionals");
+    const response = await fetch("https://my-labelm.cz/api/html/professionals");
     const htmlContent = await response.text();
     div = document.createElement("div");
     div.innerHTML = htmlContent;
@@ -319,7 +319,7 @@ function createNewBlock(html, block){
 
 async function sendHTML(html){
     try {
-        const response = await fetch('http://localhost:8080/api/html/professionals', {
+        const response = await fetch('https://my-labelm.cz/api/html/professionals', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'text/html' 
@@ -343,7 +343,7 @@ async function sentImage(files) {
         });
 
         try {
-            const response = await fetch('http://localhost:8080/api/upload/image', {
+            const response = await fetch('https://my-labelm.cz/api/upload/image', {
                 method: 'POST',
                 body: formData
             });

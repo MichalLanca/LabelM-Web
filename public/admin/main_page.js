@@ -13,7 +13,7 @@ let uploadedImages = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const response = await fetch('http://localhost:8080/api/html/main_page');
+    const response = await fetch('https://my-labelm.cz/api/html/main_page');
     const htmlContent = await response.text();
     div = document.createElement("div");
     div.innerHTML = htmlContent;
@@ -124,7 +124,7 @@ async function sentImage(files) {
         });
 
         try {
-            const response = await fetch('http://localhost:8080/api/upload/image', {
+            const response = await fetch('https://my-labelm.cz/api/upload/image', {
                 method: 'POST',
                 body: formData
             });
@@ -228,7 +228,7 @@ saveButton.addEventListener("click", async () => {
 
 async function sendHTML(html){
     try {
-        const response = await fetch('http://localhost:8080/api/html/main_page', {
+        const response = await fetch('https://my-labelm.cz/api/html/main_page', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'text/html' 

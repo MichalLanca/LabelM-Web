@@ -3,7 +3,7 @@ let div;
 let arrayOfText = []
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const response = await fetch("http://localhost:8080/api/html/social_networks");
+    const response = await fetch("https://my-labelm.cz/api/html/social_networks");
     const htmlContent = await response.text();
     div = document.createElement("div");
     div.innerHTML = htmlContent;
@@ -49,7 +49,7 @@ saveButton.addEventListener("click", async () => {
 
 async function sendHTML(html){
     try {
-        const response = await fetch('http://localhost:8080/api/html/social_networks', {
+        const response = await fetch('https://my-labelm.cz/api/html/social_networks', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json' 

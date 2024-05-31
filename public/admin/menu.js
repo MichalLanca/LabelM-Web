@@ -3,7 +3,7 @@ let div;
 const partToRemove = "https://my-labelm.cz/admin/";
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const response = await fetch("http://localhost:8080/api/html/menu");
+    const response = await fetch("https://my-labelm.cz/api/html/menu");
     const htmlContent = await response.text();
     div = document.createElement("div");
     div.innerHTML = htmlContent;
@@ -82,7 +82,7 @@ saveButton.addEventListener("click", async () => {
 
 async function sendHTML(html){
     try {
-        const response = await fetch('http://localhost:8080/api/html/menu', {
+        const response = await fetch('https://my-labelm.cz/api/html/menu', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json' 

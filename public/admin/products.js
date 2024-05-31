@@ -9,12 +9,12 @@ let imagesNewUrl = [];
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const response = await fetch("http://localhost:8080/api/html/products")
+    const response = await fetch("https://my-labelm.cz/api/html/products")
     const htmlContent = await response.text();
     oldHtml = document.createElement("div");
     oldHtml.innerHTML = htmlContent;
 
-    const responseProducts = await fetch("http://localhost:8080/api/products");
+    const responseProducts = await fetch("https://my-labelm.cz/api/products");
     const products = await responseProducts.json();
     const listContainerTwo = document.querySelector(".list_products_2");
     const itemTemplateTwo = document.getElementById("item-template_2");
@@ -270,7 +270,7 @@ async function sentImage(files) {
         });
 
         try {
-            const response = await fetch('http://localhost:8080/api/upload/image', {
+            const response = await fetch('https://my-labelm.cz/api/upload/image', {
                 method: 'POST',
                 body: formData
             });
@@ -305,7 +305,7 @@ function updateChangedImages() {
 
 async function sentJson(json){
     try {
-        const response = await fetch(`http://localhost:8080/api/html/products`, {
+        const response = await fetch(`https://my-labelm.cz/api/html/products`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'

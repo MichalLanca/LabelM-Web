@@ -195,6 +195,15 @@ router.get("/o-nas/udrzitelnost.html", cors(), async (req, res) => {
     return res.redirect("/o-nas/udrzitelnost")   
 })
 
+router.get("/moda-a-trendy", cors(), requireAuth, async (req, res) => {
+
+    return res.sendFile(path.resolve(__dirname, '../public/admin/moda-a-trendy/index.html'))
+})
+
+router.get("/o-nas/moda-a-trendy.html", cors(), async (req, res) => {
+    return res.redirect("/o-nas/moda-a-trendy")   
+})
+
 
 router.get("/uprava-menu", cors(), requireAuth, async (req, res) => {
 
