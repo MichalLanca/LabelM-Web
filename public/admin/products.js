@@ -1,6 +1,10 @@
+import { openBlock, removeExtraSpaces, responsiveMenu } from "./functions/menu-blocks-spaces";
+import { sendHTML } from "./functions/send-updated-HTML";
+import { updateChangedImages, updateImagesSource, sentImage } from "./functions/update-images";
+
 const blocks = document.querySelectorAll(".content section");
 const saveButton = document.getElementById("saveBtn");
-const partToRemove = "https://my-labelm.cz/admin/";
+const partToRemove = "http://localhost:8080/admin/";
 const imageURLpath = "../images/";
 let nextProductButton;
 let oldHtml;
@@ -9,12 +13,12 @@ let imagesNewUrl = [];
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const response = await fetch("https://my-labelm.cz/api/html/products")
+    const response = await fetch("http://localhost:8080/api/html/products")
     const htmlContent = await response.text();
     oldHtml = document.createElement("div");
     oldHtml.innerHTML = htmlContent;
 
-    const responseProducts = await fetch("https://my-labelm.cz/api/products");
+    const responseProducts = await fetch("http://localhost:8080/api/products");
     const products = await responseProducts.json();
     const listContainerTwo = document.querySelector(".list_products_2");
     const itemTemplateTwo = document.getElementById("item-template_2");
@@ -270,7 +274,7 @@ async function sentImage(files) {
         });
 
         try {
-            const response = await fetch('https://my-labelm.cz/api/upload/image', {
+            const response = await fetch('http://localhost:8080/api/upload/image', {
                 method: 'POST',
                 body: formData
             });
@@ -305,7 +309,7 @@ function updateChangedImages() {
 
 async function sentJson(json){
     try {
-        const response = await fetch(`https://my-labelm.cz/api/html/products`, {
+        const response = await fetch(`http://localhost:8080/api/html/products`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'

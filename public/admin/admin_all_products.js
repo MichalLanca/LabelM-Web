@@ -132,7 +132,7 @@ const rangeFive = ["0 0 362.5 199.5", "enable-background:new 0 0 362.5 199.5", `
 
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const response = await fetch('https://my-labelm.cz/api/products');
+    const response = await fetch('http://localhost:8080/api/products');
     const products = await response.json();
     const listContainer = document.querySelector(".list_products");
     const itemTemplate = document.getElementById("item-template");
@@ -403,7 +403,7 @@ async function sentImage(files) {
         });
 
         try {
-            const response = await fetch('https://my-labelm.cz/api/upload/image', {
+            const response = await fetch('http://localhost:8080/api/upload/image', {
                 method: 'POST',
                 body: formData
             });
@@ -425,7 +425,7 @@ async function sentVideo(file) {
         formData.append("video", file);
 
         try {
-            const response = await fetch('https://my-labelm.cz/api/upload/video', {
+            const response = await fetch('http://localhost:8080/api/upload/video', {
                 method: 'POST',
                 body: formData
             });
@@ -499,7 +499,7 @@ async function sentText(){
 
     try {
         console.log(updatedFields)
-        const response = await fetch(`https://my-labelm.cz/api/products/${productID}`, {
+        const response = await fetch(`http://localhost:8080/api/products/${productID}`, {
             method: 'PUT', 
             headers: {
                 'Content-Type': 'application/json'
