@@ -9,6 +9,7 @@ const User = require('./User');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const staticPath = path.join(__dirname, 'admin');
+require('dotenv').config();
 
 router.use("/admin", express.static(staticPath));
 
@@ -329,19 +330,19 @@ const sendEmailToAdmin = async (username, email, userId) => {
             port: 587,
             secure: false,
             auth: {
-                user: 'labelm.schvaleni.uzivatelu@gmail.com',
-                pass: 'aqhj gcmz ubsq xiyq'
+                user: process.env.EMAIL,
+                pass: process.env.EMAIL_PASS
             },
             tls: {
                 rejectUnauthorized: false 
             }
         });
 
-        const approveUrl = `https://my-labelm.cz/admin/schvalit-uzivatele?id=${userId}`;
+        const approveUrl = `http://localhost:${process.env.PORT}/admin/schvalit-uzivatele?id=${userId}`;
 
         const mailOptions = {
-            from: 'labelm.schvaleni.uzivatelu@gmail.com',
-            to: 'pavlak@italystyle.cz',
+            from: process.env.EMAIL,
+            to: process.env.ADMIN,
             subject: 'Nový uživatel potřebuje schválení',
             text: `Dobrý den,\n\nNový uživatel ${username} s e-mailem ${email} se zaregistroval. Prosím, proveďte jeho schválení: ${approveUrl}.\n\nHezký den`
         };

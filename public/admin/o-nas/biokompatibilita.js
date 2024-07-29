@@ -79,12 +79,7 @@ async function secondBlock(html){
     const hrefs = html.querySelectorAll("a")
 
     paragpraphs.forEach((p, index) => {
-        const hasAnchor = p.querySelector("a") !== null;
-        if(!hasAnchor){
-            text[index].textContent = removeExtraSpaces(p.textContent)
-        } else {
-            text[index].textContent = removeExtraSpaces(p.firstChild.textContent)
-        }
+        text[index].textContent = removeExtraSpaces(p.textContent)
     })
 
     hrefs.forEach((a, index) => {
