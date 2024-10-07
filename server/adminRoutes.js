@@ -1,4 +1,3 @@
-// productRoutes.js
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
@@ -8,12 +7,19 @@ const path = require('path');
 const User = require('./User'); 
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+const PDFDocument = require('pdfkit');
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const pdf = require('pdf-creator-node');
+const FashionWeek = require('./Fashion-week')
+
 const staticPath = path.join(__dirname, 'admin');
-require('dotenv').config();
 
 router.use("/admin", express.static(staticPath));
-
 router.use(cors());
+router.use(bodyParser.urlencoded({extended: true}))
+router.use(bodyParser.json())
 const secretKey = crypto.randomBytes(32).toString('hex');
 
 
@@ -28,7 +34,7 @@ router.post('/register', async (req, res) => {
         }
 
         const user = await createUser(username, email, password);
-        await sendEmailToAdmin(username, email, user._id);
+        await sendEmailToAdmin(username, email, user._id, false, false);
         res.status(201).redirect("/admin/");
 
     } catch (error) {
@@ -74,6 +80,79 @@ router.post('/login', async (req, res) => {
     }
 });
 
+async function htmlToPdf(htmlContent, filePath) {
+    const browser = await puppeteer.launch({
+        args: ["--no-sandbox"]
+    });
+    const page = await browser.newPage();
+
+    await page.setViewport({
+        width: 842,
+        height: 842,
+    });
+    
+    await page.setContent(htmlContent, {
+        waitUntil: "load"
+    });
+    
+    await page.pdf({
+        path: filePath, 
+        width: "845px",
+        height: "845px",
+        printBackground: true,
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
+    });
+
+    await browser.close();
+}
+
+router.post("/register-backstage", async (req, res) => {
+
+    const { df_name, df_surname, df_emailaddress, df_phone, df_salon, df_city } = req.body;
+
+
+    let id = await FashionWeek.findOne({});
+
+    if(!id){
+        return res.status(500).send('Chyba: id nebylo nalezeno.');
+    }
+    id.idBackstage += 1
+    const nameAndSalon = df_name + " " + df_surname + " " + "(" + df_salon + " " + df_city + " " + df_phone + " " + df_emailaddress + ")"
+    id.names.push(nameAndSalon)
+    await id.save()
+
+    const htmlFilePath = path.join(__dirname, 'tickets', 'ticket.html');
+
+    fs.readFile(htmlFilePath, 'utf8', async (err, data) => {
+        if (err) {
+            console.error('Chyba při čtení HTML souboru:', err);
+            return res.status(500).send('Chyba při načítání stránky');
+        }
+
+        let modifiedHtml = data
+            .replace('{{name}}', df_name + " " + df_surname)
+            .replace('{{number}}', id.idBackstage)
+
+        const pdfFileName = `ticket_${df_name}_${df_surname}_labelm.pdf`;
+        const pdfFilePath = `./tickets/${pdfFileName}`;
+        
+        try {
+            await htmlToPdf(modifiedHtml, pdfFilePath);
+            console.log("PDF soubor úspěšně vytvořen");
+
+            await sendEmailToAdmin(df_surname, df_emailaddress, id.idBackstage, pdfFileName, pdfFilePath);
+            console.log("Email s PDF úspěšně odeslán");
+
+            const json = {page: "/uspesna-registrace-backstage.html"}
+            return res.json(json)
+
+        } catch (error) {
+            console.error("Chyba při generování PDF nebo odesílání e-mailu", error);
+            res.status(500).send('Došlo k chybě při zpracování PDF nebo odesílání e-mailu');
+        }
+    });
+  });
+
 const requireAuth = (req, res, next) => {
 
     const token = req.cookies.token;
@@ -87,6 +166,10 @@ const requireAuth = (req, res, next) => {
         return res.status(301).redirect("/admin")
     }
 };
+
+router.get("/uspesna-registrace-backstage", cors(), async (req, res) => {
+    return res.sendFile(path.resolve(__dirname, "../public/uspesna-registrace-backstage.html"))
+})
 
 router.get("/uvodni-stranka", cors(), requireAuth, async (req, res) => {
 
@@ -321,33 +404,82 @@ const createUser = async (username, email, password) => {
 };
 
 
-const sendEmailToAdmin = async (username, email, userId) => {
+const sendEmailToAdmin = async (username, email, Id, fileName, filePath) => {
 
     try {
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
-            auth: {
-                user: process.env.EMAIL,
-                pass: process.env.EMAIL_PASS
-            },
-            tls: {
-                rejectUnauthorized: false 
+        if(!fileName){
+            const approveUrl = `https://my-labelm.cz/admin/schvalit-uzivatele?id=${Id}`;
+
+            const mailOptionsAdmin = {
+                from: process.env.EMAIL,
+                to: process.env.ADMIN,
+                subject: 'Nový uživatel potřebuje schválení',
+                text: `Dobrý den,\n\nNový uživatel ${username} s e-mailem ${email} se zaregistroval. Prosím, proveďte jeho schválení: ${approveUrl}.\n\nHezký den`
+            };
+
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false,
+                auth: {
+                    user: process.env.EMAIL,
+                    pass: process.env.EMAIL_PASS
+                },
+                tls: {
+                    rejectUnauthorized: false 
+                }
+            });
+
+            await transporter.sendMail(mailOptionsAdmin);
+        } else {
+
+            const mailOptionsBackstage = {
+                from: process.env.BACKSTAGE_EMAIL,
+                to: email,
+                subject: 'Backstage Pass - Fashion Week LabelM',
+                text: `Dobrý den, 
+                
+                přikládáme vaši vstupenku v příloze. Těšíme se na Vás!`,
+                attachments: [{
+                  filename: fileName,
+                  path: filePath
+                }]
+              }
+
+            const data = await FashionWeek.findOne({})  
+            const names = data.names
+
+    
+            const mailOptionsBackstageCopy = {
+                from: process.env.BACKSTAGE_EMAIL,
+                to: process.env.BACKSTAGE_EMAIL,
+                cc: [process.env.COPY_A, process.env.COPY_B, process.env.COPY_C],
+                subject: 'Nová Backstage Pass Registrace',
+                text: `Dobrý den, 
+                
+uživatel ${names[(names.length - 1)]} se právě zaregistroval na LabelM Fashion Week. 
+                
+Celý seznam hostů (${names.length}): \n${names.join('\n')}`
             }
-        });
 
-        const approveUrl = `http://localhost:${process.env.PORT}/admin/schvalit-uzivatele?id=${userId}`;
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: process.env.BACKSTAGE_EMAIL,
+                    pass: process.env.BACKSTAGE_PSWRD
+                },
+                tls: {
+                    rejectUnauthorized: false 
+                }
+            });
 
-        const mailOptions = {
-            from: process.env.EMAIL,
-            to: process.env.ADMIN,
-            subject: 'Nový uživatel potřebuje schválení',
-            text: `Dobrý den,\n\nNový uživatel ${username} s e-mailem ${email} se zaregistroval. Prosím, proveďte jeho schválení: ${approveUrl}.\n\nHezký den`
-        };
-
-        await transporter.sendMail(mailOptions);
+            await transporter.sendMail(mailOptionsBackstage);
+            await transporter.sendMail(mailOptionsBackstageCopy);
+        }
     } catch (error) {
         throw error;
     }
