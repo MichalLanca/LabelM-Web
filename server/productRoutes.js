@@ -477,7 +477,7 @@ async function updateHTMLFiles(menuData, directory, tag) {
             }
         }
     } catch (error) {
-        console.error(`Error updating HTML file:`, error);
+        console.error(`Error při updatování HTML souboru:`, error);
     }
 }
 
@@ -1096,14 +1096,14 @@ router.post("/html/menu", cors(), async (req, res) => {
     const menuData = req.body;
     const publicDir = path.join(__dirname, '../public');
     await updateHTMLFiles(menuData, publicDir, "nav");
-    res.send('Menu updated successfully.');
+    res.send('Menu updatováno.');
 })
 
 router.post("/html/social_networks", cors(), async (req, res) => {
     const menuData = req.body;
     const publicDir = path.join(__dirname, '../public');
     await updateHTMLFiles(menuData, publicDir, "section");
-    res.send('Social Networks updated successfully.');
+    res.send('Sociální sítě updatovány');
 })
 
 router.post("/html/products", cors(), async (req, res) => {
@@ -1240,7 +1240,7 @@ router.post('/upload/image', uploadImage, (req, res) => {
     console.log("P�ij�m�m po�adavek na nahr�n� obr�zku");
     const imagePath = req.files.map(file => file.path); 
     console.log("obrazek nahran");
-    res.send(`Image uploaded: ${imagePath}`);
+    res.send(`Obrázek nahrán: ${imagePath}`);
 });
 
 
@@ -1252,7 +1252,7 @@ router.post('/upload/video', (req, res) => {
         }
         const videoPath = req.file.path; 
         console.log("video nahráno");
-        res.send(`Video uploaded: ${videoPath}`);
+        res.send(`Video nahráno: ${videoPath}`);
     });
 });
 
