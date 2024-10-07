@@ -144,3 +144,7 @@ export function openBlock(){
 export function removeExtraSpaces(text) {
     return text.replace(/\s+/g, ' ').trim();
 }
+
+function removeUrlPart(url, partToRemove) {
+    return url.replace(partToRemove, "");
+}

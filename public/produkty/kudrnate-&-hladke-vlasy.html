@@ -11,6 +11,10 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="../styles.css">
     <script src="https://www.google.com/recaptcha/enterprise.js" async="" defer=""></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <title>Kudrnaté &amp; Hladké Vlasy</title>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -453,10 +457,103 @@
         </div>
         <script defer="">const ccnstL='/ochrana-osobnich-udaju',ccnstLang='cs';</script>
         <script defer="" src="/cookie-lista/ccbundle.min.js"></script>
-
-        <script src="products-range.js"></script>
         <script src="../header_footer_script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var $carouselB = $('.carousel-b');
 
+              $carouselB.slick({
+                autoplay: false,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                touchMove: true,
+                touchThreshold: 10,
+                prevArrow: $('.btn-prev-prod-car-b'),
+                nextArrow: $('.btn-next-prod-car-b'),
+                infinite: false,
+                responsive: [
+                  {
+                    breakpoint: 1024,
+                    settings: {
+                      slidesToShow: 2
+                    }
+                  },
+                  {
+                    breakpoint: 768,
+                    settings: {
+                      slidesToShow: 1
+                    }
+                  }
+                ]
+              });
+        
+              $carouselB.on('init reInit afterChange', function(event, slick, currentSlide){
+                updateArrows($carouselB, $('.btn-prev-prod-car-b'), $('.btn-next-prod-car-b'));
+                progressBar($carouselB.slick('slickCurrentSlide'));
+                dotsUpdate()
+              });
+
+                progressBar()
+                dotsUpdate()
+
+        
+              $('.btn-prev-prod-car-b, .btn-next-prod-car-b').on('click', function() {
+                if ($(this).hasClass('btn-prev-prod-car-b')) {
+                    progressBar($carouselB.slick('slickCurrentSlide'));
+                } else if ($(this).hasClass('btn-next-prod-car-b')) {
+                    progressBar($carouselB.slick('slickCurrentSlide'));
+                }
+            });
+            
+              function dotsUpdate(){
+                    let index = 0
+                    const buttons = $('.mobile_buttons button');
+                    buttons.each((index) => {
+                        $(buttons[index]).css('opacity', '1')
+                        if(index > ($carouselB.slick('slickCurrentSlide'))){
+                            $(buttons[index]).css('opacity', '0.5')
+                        }
+                        $(buttons[index]).on('click', () => {
+                            $carouselB.slick('slickGoTo', index - 1)
+                        })
+                        index++
+                    })
+                }
+        
+              function progressBar(index){
+                var totalSlides = $carouselB.slick('getSlick').slideCount;
+                var slidesToShow = $carouselB.slick('slickGetOption', 'slidesToShow');
+                var percentage = 100 / (totalSlides - slidesToShow);
+                if(totalSlides <= slidesToShow){
+                    console.log("jsme tadyyy")
+                    $('.-left-full.progress_bar').css('left', '0');
+                } else {
+                    $('.-left-full.progress_bar').css('left', '-' + (100 - (index * percentage)) + '%');
+                }
+              }
+        
+              function updateArrows($carousel, $prevArrow, $nextArrow) {
+                var currentSlide = $carousel.slick('slickCurrentSlide');
+                var totalSlides = $carousel.slick('getSlick').slideCount;
+                var slidesToShow = $carousel.slick('slickGetOption', 'slidesToShow');
+        
+                if (currentSlide === 0) {
+                  $prevArrow.prop('disabled', true);
+                } else {
+                  $prevArrow.prop('disabled', false);
+                }
+        
+                if (currentSlide >= totalSlides - slidesToShow) {
+                  $nextArrow.prop('disabled', true);
+                } else {
+                  $nextArrow.prop('disabled', false);
+                }
+              }
+              }
+            );
+          </script>
 
 
 

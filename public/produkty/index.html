@@ -34,12 +34,6 @@
     })(window,document,'script','dataLayer','GTM-TRLPRG5L');</script>
     <!-- End Google Tag Manager -->
     <link rel="stylesheet" type="text/css" href="/cookie-lista/ccstyles.min.css">
-    <!-- <style>
-        .slick-slide {
-      width: calc((100% / 4.5) - 10px); /* Zajistí 4 a půl slidů v karuselu, 10px pro mezeru mezi slidery */
-      margin-right: 10px; /* Přidá mezeru mezi slidery */
-    }
-    </style> -->
 </head>
 
 <body class="antialiased bg-putty-200 font-display">
@@ -994,9 +988,7 @@
         </div>
         <script defer="">const ccnstL='/ochrana-osobnich-udaju',ccnstLang='cs';</script>
         <script defer="" src="/cookie-lista/ccbundle.min.js"></script>
-    
-
-        <script src="products.js"></script>
+        <script src="index.js"></script>
         <script src="../header_footer_script.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
@@ -1007,9 +999,10 @@
 
       $carouselA.slick({
         autoplay: false,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         touchMove: true,
+        touchThreshold: 10,
         prevArrow: $('.btn-prev-prod-car-a'),
         nextArrow: $('.btn-next-prod-car-a'),
         infinite: false,
@@ -1023,7 +1016,8 @@
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 1
+              slidesToShow: 1,
+              slidesToScroll: 1
             }
           }
         ]
@@ -1034,6 +1028,7 @@
         slidesToShow: 4,
         slidesToScroll: 1,
         touchMove: true,
+        touchThreshold: 10,
         prevArrow: $('.btn-prev-prod-car-b'),
         nextArrow: $('.btn-next-prod-car-b'),
         infinite: false,
@@ -1059,7 +1054,42 @@
 
       $carouselB.on('init reInit afterChange', function(event, slick, currentSlide){
         updateArrows($carouselB, $('.btn-prev-prod-car-b'), $('.btn-next-prod-car-b'));
+        progressBar($carouselB.slick('slickCurrentSlide'));
+        dotsUpdate()
       });
+
+      dotsUpdate()
+
+      $('.btn-prev-prod-car-b, .btn-next-prod-car-b').on('click', function() {
+        if ($(this).hasClass('btn-prev-prod-car-b')) {
+            progressBar($carouselB.slick('slickCurrentSlide'));
+        } else if ($(this).hasClass('btn-next-prod-car-b')) {
+            progressBar($carouselB.slick('slickCurrentSlide'));
+        }
+    });
+    
+      function dotsUpdate(){
+            let index = 0
+            const buttons = $('.mobile_buttons button');
+            buttons.each((index) => {
+                $(buttons[index]).css('opacity', '1')
+                if(index > ($carouselB.slick('slickCurrentSlide'))){
+                    $(buttons[index]).css('opacity', '0.5')
+                }
+                $(buttons[index]).on('click', () => {
+                    $carouselB.slick('slickGoTo', index - 1)
+                })
+                index++
+            })
+        }
+
+      function progressBar(index){
+        var totalSlides = $carouselB.slick('getSlick').slideCount;
+        var slidesToShow = $carouselB.slick('slickGetOption', 'slidesToShow');
+        var percentage = 100 / (totalSlides - slidesToShow);
+        console.log(index, percentage, totalSlides, slidesToShow)
+        $('.-left-full.progress_bar').css('left', '-' + (100 - (index * percentage)) + '%');
+      }
 
       function updateArrows($carousel, $prevArrow, $nextArrow) {
         var currentSlide = $carousel.slick('slickCurrentSlide');
