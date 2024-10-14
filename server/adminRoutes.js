@@ -8,10 +8,8 @@ const User = require('./User');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-const PDFDocument = require('pdfkit');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
-const pdf = require('pdf-creator-node');
 const FashionWeek = require('./Fashion-week')
 
 const staticPath = path.join(__dirname, 'admin');
@@ -408,7 +406,7 @@ const sendEmailToAdmin = async (username, email, Id, fileName, filePath) => {
 
     try {
         if(!fileName){
-            const approveUrl = `https://my-labelm.cz/admin/schvalit-uzivatele?id=${Id}`;
+            const approveUrl = `http://localhost:${process.env.PORT}/admin/schvalit-uzivatele?id=${Id}`;
 
             const mailOptionsAdmin = {
                 from: process.env.EMAIL,
